@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Through the Ripple — mini-game styles
+   Ported from normcontrol-kb quartz/styles/custom.scss (game blocks only:
+   #echelon-*, .lore-note*, .cinematic-*) and adapted to the landing:
+   the board fills the page, no Quartz chrome anywhere.
+   ========================================================================== */
+
+/* --- the playfield ------------------------------------------------------- */
+
+#echelon-wrap {
+  /* keeps the 900x500 board fully visible and unstretched on short screens */
+  width: min(100%, max(340px, calc((100vh - 320px) * 1.8)));
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+#echelon-hud {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 1rem;
+  background: rgba(14,13,18,0.8);
+  border: 1px solid rgba(212,165,90,0.2);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--cream);
+}
+
+#echelon-hud b { color: var(--amber); }
+
+#echelon-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900 / 500;
+  margin-top: 1rem;
+  background: #000;
+  border: 1px solid rgba(212,165,90,0.3);
+  border-radius: 8px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+#echelon-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#echelon-buttons button {
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212,165,90,0.4);
+  background: linear-gradient(135deg, var(--lavender), var(--rose));
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#echelon-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138,122,184,0.5);
+}
+
+#echelon-result {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  font-family: var(--font-head);
+}
+
+#echelon-result:empty { display: none; }
+#echelon-result.result-win { color: var(--amber); font-size: 1.2rem; }
+#echelon-result.result-lose { color: var(--rose); font-size: 1.2rem; }
+#echelon-result .result-info { color: var(--cream-muted); font-size: 0.9rem; }
+
+#echelon-record {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--cream-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* --- lore notes the game hands out between layers ------------------------ */
+
+.lore-note-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,20,0.85);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.lore-note-overlay.visible { opacity: 1; }
+
+.lore-note {
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem;
+  background: #faf6f0;
+  border: 2px solid #c8a878;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.lore-note h2 {
+  font-family: var(--font-head);
+  color: #8a2a2a;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.lore-note p {
+  font-family: var(--font-body);
+  color: #3a3448;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.lore-note .signature {
+  color: #8a7f9a;
+  font-style: italic;
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.lore-note button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, var(--lavender), var(--rose));
+  color: var(--cream);
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.lore-note button:hover { transform: translateY(-2px); }
+
+/* --- the final cinematic ------------------------------------------------- */
+
+.cinematic-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+  background: #000;
+}
+
+.cinematic-buttons {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 510;
+}
+
+.cinematic-buttons button {
+  padding: 0.8rem 1.6rem;
+  border-radius: 24px;
+  border: 1px solid #c8a878;
+  background: linear-gradient(135deg, var(--lavender), var(--rose));
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cinematic-buttons button:hover { transform: translateY(-2px); }
+
+/* --- safety net: no Quartz chrome can ever appear on this page ----------- */
+/* (nothing of it is loaded here — the board is the whole page)             */
+
+.echelon-page .sidebar,
+.echelon-page .search,
+.echelon-page .graph,
+.echelon-page .backlinks,
+.echelon-page .tags,
+.echelon-page .add-note,
+.echelon-page .add-note-button,
+.echelon-page nav,
+.echelon-page aside,
+.echelon-page .explorer,
+.echelon-page .page-header,
+.echelon-page .breadcrumbs,
+.echelon-page .toc {
+  display: none !important;
+}
+
+/* --- responsive ---------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  #echelon-wrap { width: 100%; padding: 0.75rem 0; }
+  #echelon-hud { font-size: 11px; gap: 0.5rem; padding: 0.6rem 0.75rem; }
+  #echelon-buttons { gap: 0.6rem; }
+  #echelon-buttons button { padding: 0.7rem 1.2rem; font-size: 12px; }
+
+  .lore-note { padding: 1.5rem; }
+  .lore-note h2 { font-size: 1.1rem; }
+
+  .cinematic-buttons {
+    bottom: 1.5rem;
+    flex-direction: column;
+    width: 80%;
+    left: 10%;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #echelon-buttons button,
+  .lore-note button,
+  .cinematic-buttons button { transition: none; }
+}

@@ -10,10 +10,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://frinog1-a11y.github.io/izramor/echelon/">
 <meta name="theme-color" content="#0e0d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="game.css">
 <style>
-  .echelon-page { overflow: hidden; }
-
+  /* page chrome — the game itself is styled by game.css */
   .echelon-bar {
     position: fixed;
     top: 0;
@@ -45,36 +48,87 @@
     color: var(--cream);
   }
 
-  .echelon-frame {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
+  .echelon-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .echelon-sound {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 9px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--cream-muted);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .echelon-sound:hover { border-color: var(--amber); color: var(--cream); }
+  .echelon-sound.is-on { border-color: var(--amber); color: var(--amber); }
+
+  #game-root {
     height: calc(100vh - 60px);
-    border: 0;
-    display: block;
-    background: var(--ink);
+    margin-top: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+  }
+
+  .echelon-hint {
+    margin: 0.75rem 0 0;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cream-muted);
   }
 
   @media (max-width: 520px) {
     .echelon-bar { padding: 0 12px; }
     .echelon-bar a { font-size: 11px; letter-spacing: 0.03em; }
+    .echelon-bar-right { gap: 10px; }
   }
 </style>
 </head>
-<body class="lang-en echelon-page">
+<body class="lang-en echelon-page" data-base-path="..">
 
 <div class="echelon-bar">
   <a href="../"><span lang="en">← Back to portfolio</span><span lang="ru">← Назад в портфолио</span></a>
-  <a href="https://frinog1-a11y.github.io/normcontrol-kb/echelon" target="_blank" rel="noopener"><span lang="en">Open fullscreen ↗</span><span lang="ru">Открыть на весь экран ↗</span></a>
+  <div class="echelon-bar-right">
+    <button type="button" id="echelon-sound" class="echelon-sound" aria-pressed="false" title="Sound on/off">🔇</button>
+    <a href="https://frinog1-a11y.github.io/normcontrol-kb/echelon" target="_blank" rel="noopener"><span lang="en">Open on normcontrol ↗</span><span lang="ru">Открыть на normcontrol ↗</span></a>
+  </div>
 </div>
 
-<iframe class="echelon-frame"
-        src="https://frinog1-a11y.github.io/normcontrol-kb/echelon"
-        title="Through the Ripple — mini-game"
-        allowfullscreen></iframe>
+<main id="game-root">
+  <div id="echelon-wrap">
+    <div id="echelon-hud">
+      <span><span lang="en">Layer</span><span lang="ru">Слой</span> <b id="hud-layer">1</b>/5</span>
+      <span>❤ <b id="hud-health">100</b></span>
+      <span>⛽ <b id="hud-fuel">100</b></span>
+      <span>✨ <b id="hud-faith">0</b></span>
+      <span>🌑 <b id="hud-corruption">0</b></span>
+    </div>
+    <canvas id="echelon-canvas" width="900" height="500"></canvas>
+    <div id="echelon-buttons">
+      <button id="btn-start"><span lang="en">▶ Start</span><span lang="ru">▶ Начать</span></button>
+      <button id="btn-fire"><span lang="en">🔥 Fire</span><span lang="ru">🔥 Огонь</span></button>
+      <button id="btn-restart" style="display:none"><span lang="en">↻ Restart</span><span lang="ru">↻ Заново</span></button>
+    </div>
+    <div id="echelon-result"></div>
+    <div id="echelon-record"></div>
+    <p class="echelon-hint">
+      <span lang="en">WASD / arrows to move · tap the field to steer · Fire or Space to shoot</span>
+      <span lang="ru">WASD / стрелки — движение · касание поля ведёт корабль · «Огонь» или пробел — выстрел</span>
+    </p>
+  </div>
+</main>
 
 <script>
 (function () {
@@ -86,7 +140,32 @@
     document.documentElement.setAttribute('lang', value);
   } catch (e) { /* storage disabled — keep EN */ }
 })();
+
+/* the game reads this flag on start and reacts to the events below */
+(function () {
+  var btn = document.getElementById('echelon-sound');
+  if (!btn) { return; }
+  function isOn() {
+    try { return localStorage.getItem('sound-enabled') === 'true'; } catch (e) { return false; }
+  }
+  function paint() {
+    var on = isOn();
+    btn.textContent = on ? '🔊' : '🔇';
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.title = on ? 'Sound: on' : 'Sound: off';
+    btn.classList.toggle('is-on', on);
+  }
+  btn.addEventListener('click', function () {
+    var next = !isOn();
+    try { localStorage.setItem('sound-enabled', next ? 'true' : 'false'); } catch (e) {}
+    paint();
+    window.dispatchEvent(new Event(next ? 'sound-enabled' : 'sound-disabled'));
+  });
+  paint();
+})();
 </script>
+
+<script src="game.js"></script>
 
 </body>
 </html>

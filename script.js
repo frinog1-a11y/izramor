@@ -261,15 +261,31 @@
     var glow = $('#cursor-glow');
     var ring = $('#cursor-ring');
     var pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    var ringPos = { x: pointer.x, y: pointer.y };
+    var ringSize = 8;
     var entered = false;
 
     document.body.classList.add('cursor-hidden');
 
+    function placeRing() {
+      if (!ring) { return; }
+      ring.style.transform = 'translate(' + (pointer.x - ringSize / 2) + 'px,' + (pointer.y - ringSize / 2) + 'px)';
+    }
+
+    function setRingHover(on) {
+      if (!ring) { return; }
+      ring.classList.toggle('is-hover', on);
+      ringSize = on ? 32 : 8;
+      placeRing();
+    }
+
     window.addEventListener('mousemove', function (e) {
       pointer.x = e.clientX;
       pointer.y = e.clientY;
-      if (!entered) { entered = true; if (ring) { ring.style.opacity = '1'; } }
+      if (!entered) {
+        entered = true;
+        if (ring) { ring.style.opacity = '1'; }
+      }
+      placeRing();
 
       if (glow) {
         glow.style.transform = 'translate(' + (pointer.x - 300) + 'px,' + (pointer.y - 300) + 'px)';
@@ -278,26 +294,11 @@
 
     var interactive = 'a, button, .card, .tag, .price-row, .contact-val';
     document.addEventListener('mouseover', function (e) {
-      if (e.target.closest && e.target.closest(interactive)) {
-        if (ring) { ring.classList.add('is-hover'); }
-      }
+      if (e.target.closest && e.target.closest(interactive)) { setRingHover(true); }
     });
     document.addEventListener('mouseout', function (e) {
-      if (e.target.closest && e.target.closest(interactive)) {
-        if (ring) { ring.classList.remove('is-hover'); }
-      }
+      if (e.target.closest && e.target.closest(interactive)) { setRingHover(false); }
     });
-
-    function ringLoop() {
-      ringPos.x += (pointer.x - ringPos.x) * 0.18;
-      ringPos.y += (pointer.y - ringPos.y) * 0.18;
-      if (ring) {
-        var size = ring.classList.contains('is-hover') ? 32 : 8;
-        ring.style.transform = 'translate(' + (ringPos.x - size / 2) + 'px,' + (ringPos.y - size / 2) + 'px)';
-      }
-      window.requestAnimationFrame(ringLoop);
-    }
-    if (ring && !reduceMotion) { window.requestAnimationFrame(ringLoop); }
   }
 
   /* ------------------------------------------------------------------------

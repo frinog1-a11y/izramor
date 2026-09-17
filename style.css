@@ -15,6 +15,11 @@
   --lavender:     #8a7ab8;
   --rose:         #b86a8a;
 
+  /* workbench wood */
+  --wood-dark:    #6b4a2a;
+  --wood-mid:     #8a6a3a;
+  --wood-warm:    #a87a42;
+
   --font-head: 'Playfair Display', Georgia, serif;
   --font-body: Inter, 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', Consolas, monospace;
@@ -29,10 +34,14 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(212,165,90,0.06), transparent 70%),
-    linear-gradient(180deg, var(--ink) 0%, var(--wood) 55%, var(--ink) 100%);
+  /* engineering paper: a dark sheet with a faint warm grid — blueprints, drafts */
   background-color: var(--ink);
+  background-image:
+    linear-gradient(rgba(212,165,90,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,165,90,0.03) 1px, transparent 1px),
+    linear-gradient(rgba(212,165,90,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,165,90,0.05) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
   color: var(--cream);
   font-family: var(--font-body);
   font-size: 17px;
@@ -65,7 +74,7 @@ body::before {
   50%      { opacity: 0.7; }
 }
 
-/* --- wood grain, a whisper (Midnight Atelier: wood, brass, glass) -------- */
+/* --- paper noise on the wall (engineering sheet, not flat digital colour) - */
 
 body::after {
   content: '';
@@ -73,10 +82,10 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.5' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.65 0 0 0 0 0.35 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23w)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.65 0 0 0 0 0.35 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
   background-repeat: repeat;
-  opacity: 0.04;
+  opacity: 0.025;
   mix-blend-mode: overlay;
 }
 
@@ -130,10 +139,18 @@ body::after {
   max-width: 46em;
 }
 
+/* --- shelf lines: faint pencil rules between sections -------------------- */
+
 .gold-line {
+  position: relative;
+  z-index: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent 0%, var(--amber) 20%, var(--amber) 80%, transparent 100%);
-  opacity: 0.4;
+  margin: 0 5%;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(212,165,90,0.15) 20%,
+    rgba(212,165,90,0.15) 80%,
+    transparent 100%);
 }
 
 /* --- language switching ------------------------------------------------- */

@@ -699,6 +699,43 @@ body.lang-ru [lang="en"] { display: none !important; }
 
 .cases-grid .case-links { margin-top: auto; }
 
+/* --- status badges on case cards ---------------------------------------- */
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  line-height: 1.5;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.badge-live {
+  background: var(--amber);
+  color: var(--ink);
+  border-color: var(--amber);
+}
+
+.badge-home {
+  background: transparent;
+  color: var(--amber);
+  border-color: var(--amber);
+}
+
+.badge-demo,
+.badge-rd {
+  background: transparent;
+  color: var(--cream-muted);
+  border-color: var(--cream-muted);
+}
+
 .case-num {
   display: block;
   color: var(--amber);
@@ -998,6 +1035,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   .sec::before, .sec::after { display: none; }
   .cards-grid > .card { flex-basis: 100%; max-width: 100%; min-width: 0; }
   .cases-grid > .case-card { flex-basis: 100%; max-width: 100%; min-width: 0; }
+  .badge { display: none; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .stats li { padding: 0 16px; }
   .stat-num { font-size: 26px; }

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Izramor — AI Engineer &amp; Automation Consultant</title>
+<meta name="description" content="I build working systems with AI agents — from knowledge bases to LoRA training. 13 projects shipped, 2 live in public. Projects from $50.">
+<meta property="og:title" content="Izramor — AI Engineer &amp; Automation Consultant">
+<meta property="og:description" content="AI pipelines, LoRA training, local AI servers, WebRTC, routine automation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://frinog1-a11y.github.io/izramor/">
+<meta name="theme-color" content="#0e0d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en">
+
+<div id="scroll-progress" aria-hidden="true"></div>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<div id="lang-switch" role="group" aria-label="Language / Язык">
+  <button type="button" class="ls-btn" data-lang="en">EN</button>
+  <span class="ls-sep">/</span>
+  <button type="button" class="ls-btn" data-lang="ru">RU</button>
+</div>
+
+<nav id="side-nav" aria-label="Sections">
+  <a href="#hero" data-target="hero"><span class="nav-num">01</span><span class="nav-name"><span lang="en">Hero</span><span lang="ru">Начало</span></span></a>
+  <a href="#about" data-target="about"><span class="nav-num">02</span><span class="nav-name"><span lang="en">About</span><span lang="ru">О себе</span></span></a>
+  <a href="#services" data-target="services"><span class="nav-num">03</span><span class="nav-name"><span lang="en">Services</span><span lang="ru">Услуги</span></span></a>
+  <a href="#pricing" data-target="pricing"><span class="nav-num">04</span><span class="nav-name"><span lang="en">Pricing</span><span lang="ru">Цены</span></span></a>
+  <a href="#cases" data-target="cases"><span class="nav-num">05</span><span class="nav-name"><span lang="en">Cases</span><span lang="ru">Кейсы</span></span></a>
+  <a href="#atlas" data-target="atlas"><span class="nav-num">06</span><span class="nav-name"><span lang="en">Atlas</span><span lang="ru">Атлас</span></span></a>
+  <a href="#process" data-target="process"><span class="nav-num">07</span><span class="nav-name"><span lang="en">Process</span><span lang="ru">Процесс</span></span></a>
+  <a href="#contact" data-target="contact"><span class="nav-num">08</span><span class="nav-name"><span lang="en">Contact</span><span lang="ru">Контакт</span></span></a>
+</nav>
+
+<section id="hero" class="sec hero">
+  <div class="bp-grid" aria-hidden="true"></div>
+  <canvas id="dust-canvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker mono">
+      <span lang="en">AI Engineer &amp; Automation Consultant</span>
+      <span lang="ru">AI-инженер и консультант по автоматизации</span>
+    </p>
+    <h1 class="hero-name">
+      <span lang="en">Izramor</span>
+      <span lang="ru">Израмор</span>
+    </h1>
+    <p class="hero-tagline">
+      <span lang="en">I build working systems with AI agents — from knowledge bases to LoRA training.</span>
+      <span lang="ru">Строю работающие системы с ИИ-агентами — от баз знаний до обучения LoRA.</span>
+    </p>
+    <p class="hero-facts mono">
+      <span lang="en">13 projects shipped, 2 live in public.</span>
+      <span lang="ru">13 проектов, 2 работают публично.</span>
+    </p>
+
+    <ul class="stats">
+      <li>
+        <span class="stat-num" data-count="13">0</span>
+        <span class="stat-label mono"><span lang="en">projects</span><span lang="ru">проектов</span></span>
+      </li>
+      <li>
+        <span class="stat-num" data-count="2">0</span>
+        <span class="stat-label mono"><span lang="en">live in public</span><span lang="ru">публично</span></span>
+      </li>
+      <li>
+        <span class="stat-num" data-count="24" data-suffix="h">0</span>
+        <span class="stat-label mono"><span lang="en">reply</span><span lang="ru">часа ответ</span></span>
+      </li>
+    </ul>
+
+    <p class="hero-price">
+      <span lang="en">Projects from $50. First 3 clients — 30% off in exchange for a detailed review.
+      Task discussion (30 min) — free.</span>
+      <span lang="ru">Проекты от 3000 ₽. Первым трём клиентам — скидка 30% в обмен на развёрнутый отзыв.
+      Обсуждение задачи (30 минут) — бесплатно.</span>
+    </p>
+
+    <ul class="status-list mono">
+      <li><span class="dot"></span><span lang="en">Available now</span><span lang="ru">Доступен сейчас</span></li>
+      <li><span class="dot"></span><span lang="en">Reply within 24 hours</span><span lang="ru">Отвечаю в течение 24 часов</span></li>
+      <li><span class="dot"></span><span lang="en">Currently: open for new projects</span><span lang="ru">Сейчас: открыт для новых проектов</span></li>
+    </ul>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://cal.com/izramor" target="_blank" rel="noopener">
+        <span lang="en">Book a call</span><span lang="ru">Записаться на звонок</span>
+      </a>
+      <a class="btn btn-secondary" href="https://t.me/Izramor" target="_blank" rel="noopener">
+        <span lang="en">Message on Telegram</span><span lang="ru">Написать в Telegram</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">About</span><span lang="ru">О себе</span></h2>
+    <div class="about-body">
+      <p>
+        <span lang="en">I build AI pipelines, train LoRA models, set up local AI servers, and automate routine work.</span>
+        <span lang="ru">Строю ИИ-конвейеры, обучаю LoRA, настраиваю локальные ИИ-серверы, автоматизирую рутину.</span>
+      </p>
+      <p>
+        <span lang="en">Based in Russia, working remotely with clients worldwide.</span>
+        <span lang="ru">Работаю удалённо, по результату.</span>
+      </p>
+      <p class="about-final">
+        <span lang="en">I don't just write code — I deliver working systems.</span>
+        <span lang="ru">Не просто пишу код — отдаю работающие системы.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="services" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">What I do</span><span lang="ru">Что я делаю</span></h2>
+    <div class="cards-grid">
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="10" cy="24" r="4"/><circle cx="27" cy="12" r="4"/>
+          <circle cx="27" cy="36" r="4"/><circle cx="40" cy="24" r="4"/>
+          <path d="M14 22 23 14M14 26 23 34M31 13 36 21M31 35 36 27"/>
+        </svg>
+        <h3><span lang="en">AI pipelines for knowledge bases</span><span lang="ru">ИИ-конвейеры для баз знаний</span></h3>
+        <p>
+          <span lang="en">Raw text → structured base with links and search. One input field, a live note in 2 minutes.</span>
+          <span lang="ru">Сырой текст → структурированная база со связями и поиском. Одно поле — заметка на сайте через 2 минуты.</span>
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="10" y="10" width="28" height="9" rx="2"/>
+          <rect x="14" y="21" width="28" height="9" rx="2"/>
+          <rect x="10" y="32" width="28" height="9" rx="2"/>
+        </svg>
+        <h3><span lang="en">LoRA training in your style</span><span lang="ru">Обучение LoRA под ваш стиль</span></h3>
+        <p>
+          <span lang="en">Dataset, training on your GPU, ready preset. Fully local, no cloud.</span>
+          <span lang="ru">Датасет, обучение на вашей GPU, готовый пресет. Полностью локально, без облаков.</span>
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="8" y="12" width="32" height="24" rx="3"/>
+          <path d="M14 20l5 4-5 4M23 30h11"/>
+        </svg>
+        <h3><span lang="en">Cline and AI agent setup</span><span lang="ru">Настройка Cline и ИИ-агентов</span></h3>
+        <p>
+          <span lang="en">Result contract, task board, autotasks. The agent works autonomously.</span>
+          <span lang="ru">Контракт результата, доска задач, автозадачи. Агент работает автономно.</span>
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="9" y="9" width="30" height="13" rx="3"/>
+          <rect x="9" y="26" width="30" height="13" rx="3"/>
+          <path d="M15 15.5h1M15 32.5h1"/>
+        </svg>
+        <h3><span lang="en">Local AI servers</span><span lang="ru">Локальные ИИ-серверы</span></h3>
+        <p>
+          <span lang="en">Ollama, LM Studio, phone access over a private network. Zero cloud.</span>
+          <span lang="ru">Ollama, LM Studio, доступ с телефона по приватной сети. Ноль облаков.</span>
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="8" y="14" width="22" height="20" rx="3"/>
+          <path d="M30 20l10-5v18l-10-5z"/>
+        </svg>
+        <h3><span lang="en">Real-time video and audio (WebRTC)</span><span lang="ru">Видео и аудио в реальном времени</span></h3>
+        <p>
+          <span lang="en">Two-way communication in the browser. No middlemen.</span>
+          <span lang="ru">Двусторонняя связь через браузер. Без посредников.</span>
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="6"/>
+          <path d="M24 8v6M24 34v6M8 24h6M34 24h6M13 13l4 4M31 31l4 4M35 13l-4 4M17 31l-4 4"/>
+        </svg>
+        <h3><span lang="en">Routine automation</span><span lang="ru">Автоматизация рутины</span></h3>
+        <p>
+          <span lang="en">Scripts for your files and processes: renaming, layout, conversion, batch.</span>
+          <span lang="ru">Скрипты под ваши файлы и процессы: переименование, вёрстка, конвертация, пакетно.</span>
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="pricing" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">Typical projects</span><span lang="ru">Типовые проекты</span></h2>
+    <p class="sec-sub">
+      <span lang="en">Every project is different. These are typical starting points.</span>
+      <span lang="ru">Каждый проект уникален. Это стартовые точки.</span>
+    </p>
+
+    <div class="price-rows">
+      <div class="price-row reveal">
+        <span class="price-name"><span lang="en">AI pipeline for a knowledge base</span><span lang="ru">ИИ-конвейер для базы знаний</span></span>
+        <span class="price-from mono"><span lang="en">from $350</span><span lang="ru">от 20 000 ₽</span></span>
+      </div>
+      <div class="price-row reveal">
+        <span class="price-name"><span lang="en">LoRA training in your style</span><span lang="ru">Обучение LoRA под стиль</span></span>
+        <span class="price-from mono"><span lang="en">from $100</span><span lang="ru">от 6 000 ₽</span></span>
+      </div>
+      <div class="price-row reveal">
+        <span class="price-name"><span lang="en">Cline / AI agent setup</span><span lang="ru">Настройка Cline / ИИ-агента</span></span>
+        <span class="price-from mono"><span lang="en">from $100</span><span lang="ru">от 6 000 ₽</span></span>
+      </div>
+      <div class="price-row reveal">
+        <span class="price-name"><span lang="en">Local AI server</span><span lang="ru">Локальный ИИ-сервер</span></span>
+        <span class="price-from mono"><span lang="en">from $100</span><span lang="ru">от 6 000 ₽</span></span>
+      </div>
+      <div class="price-row reveal">
+        <span class="price-name"><span lang="en">WebRTC two-way audio/video</span><span lang="ru">WebRTC аудио/видео</span></span>
+        <span class="price-from mono"><span lang="en">from $200</span><span lang="ru">от 12 000 ₽</span></span>
+      </div>
+      <div class="price-row reveal">
+        <span class="price-name"><span lang="en">Routine automation</span><span lang="ru">Автоматизация рутины</span></span>
+        <span class="price-from mono"><span lang="en">from $50</span><span lang="ru">от 3 000 ₽</span></span>
+      </div>
+    </div>
+
+    <p class="price-note">
+      <span lang="en">Minimum project — $50. First 3 clients get 30% off in exchange for a detailed review.
+      Payment: crypto (USDT) + intermediary services, details on request.</span>
+      <span lang="ru">Минимум за проект — 3 000 ₽. Первым трём клиентам — скидка 30% в обмен на развёрнутый отзыв.
+      Оплата: крипта (USDT) + сервисы-посредники, детали по запросу.</span>
+    </p>
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="cases" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">Cases</span><span lang="ru">Кейсы</span></h2>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">01</span>
+      <h3><span lang="en">Baby Monitor — two-way audio on a home PC</span><span lang="ru">Видеокамера — видеоняня на домашнем ПК</span></h3>
+      <p>
+        <span lang="en">WebRTC two-way audio, Windows service autostart, HTTPS, PWA on phone, motion notifications. 18 commits, $0.70 in API costs.</span>
+        <span lang="ru">Двустороннее аудио по WebRTC, автозапуск службой Windows, HTTPS, PWA на телефоне, уведомления о движении. 18 коммитов, $0,70 расходов на API.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">WebRTC</span><span class="tag">Node.js</span><span class="tag">NSSM</span><span class="tag">PWA</span><span class="tag">Basic Auth</span>
+      </div>
+      <a class="case-link mono" href="cases/dev/01-videokamera.en.md" lang="en">Open →</a>
+      <a class="case-link mono" href="cases/dev/01-videokamera.ru.md" lang="ru">Открыть →</a>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">02</span>
+      <h3><span lang="en">"Between the Lines of the Blueprint" — knowledge base</span><span lang="ru">«Между строк чертежа» — база знаний</span></h3>
+      <p>
+        <span lang="en">Live site, 128 notes, AI pipeline "one field → ready note". Used daily.</span>
+        <span lang="ru">Живой сайт, 128 заметок, ИИ-конвейер «одно поле → готовая заметка». Используется ежедневно.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">Quartz</span><span class="tag">GitHub Actions</span><span class="tag">DeepSeek API</span><span class="tag">D3</span><span class="tag">TypeScript</span>
+      </div>
+      <div class="case-links">
+        <a class="case-link mono" href="https://frinog1-a11y.github.io/normcontrol-kb/" target="_blank" rel="noopener"><span lang="en">Live site →</span><span lang="ru">Живой сайт →</span></a>
+        <a class="case-link mono" href="cases/dev/02-normcontrol-kb.en.md" lang="en">Open →</a>
+        <a class="case-link mono" href="cases/dev/02-normcontrol-kb.ru.md" lang="ru">Открыть →</a>
+      </div>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">03</span>
+      <h3><span lang="en">Mini-game "Through the Ripple"</span><span lang="ru">Мини-игра «Сквозь Зыбь»</span></h3>
+      <p>
+        <span lang="en">1,893 lines of JS, 5 bosses, procedural sound. Playable now.</span>
+        <span lang="ru">1 893 строки JS, 5 боссов, процедурный звук. Можно играть сейчас.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">Canvas</span><span class="tag">Web Audio API</span><span class="tag">Vanilla JS</span>
+      </div>
+      <div class="case-links">
+        <a class="case-link mono" href="https://frinog1-a11y.github.io/normcontrol-kb/echelon" target="_blank" rel="noopener"><span lang="en">Play →</span><span lang="ru">Играть →</span></a>
+        <a class="case-link mono" href="cases/dev/03-echelon-mini-game.en.md" lang="en">Open →</a>
+        <a class="case-link mono" href="cases/dev/03-echelon-mini-game.ru.md" lang="ru">Открыть →</a>
+      </div>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">04</span>
+      <h3><span lang="en">Unified visual style via LoRA</span><span lang="ru">Единый стиль через LoRA</span></h3>
+      <p>
+        <span lang="en">LoRA trained from scratch on 8 GB VRAM. 50-frame dataset, 11× speedup, 300 tracks.</span>
+        <span lang="ru">LoRA обучена с нуля на 8 ГБ VRAM. Датасет 50 кадров, ускорение в 11 раз, 300 треков.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">SDXL</span><span class="tag">kohya_ss</span><span class="tag">Fooocus</span><span class="tag">ACE-Step</span><span class="tag">RTX 3060 Ti</span>
+      </div>
+      <a class="case-link mono" href="cases/dev/05-cline-art-music.en.md" lang="en">Open →</a>
+      <a class="case-link mono" href="cases/dev/05-cline-art-music.ru.md" lang="ru">Открыть →</a>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">05</span>
+      <h3><span lang="en">Game project production pipeline</span><span lang="ru">Производственный пайплайн игрового проекта</span></h3>
+      <p>
+        <span lang="en">18 volumes of world documentation, kanban board, AI agents under result contract.</span>
+        <span lang="ru">18 томов документации мира, канбан-доска, ИИ-агенты по контракту результата.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">Cline</span><span class="tag">AGENTS.md</span><span class="tag">Wake-on-LAN</span><span class="tag">Ollama</span><span class="tag">Taildrop</span>
+      </div>
+      <a class="case-link mono" href="cases/dev/04-echelon-beyond.en.md" lang="en">Open →</a>
+      <a class="case-link mono" href="cases/dev/04-echelon-beyond.ru.md" lang="ru">Открыть →</a>
+    </article>
+
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="atlas" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">Atlas</span><span lang="ru">Атлас</span></h2>
+    <p class="sec-sub">
+      <span lang="en">Map of work: how cases and skills connect. Hover to highlight, click to open a case.</span>
+      <span lang="ru">Карта работ: как связаны кейсы и навыки. Наведите — подсветится, клик открывает кейс.</span>
+    </p>
+
+    <div class="atlas-legend mono">
+      <span class="lg-item"><span class="lg-dot lg-dev"></span><span lang="en">dev cases</span><span lang="ru">dev-кейсы</span></span>
+      <span class="lg-item"><span class="lg-dot lg-creative"></span><span lang="en">creative cases</span><span lang="ru">творческие кейсы</span></span>
+      <span class="lg-item"><span class="lg-dot lg-skill"></span><span lang="en">skills</span><span lang="ru">навыки</span></span>
+    </div>
+
+    <div class="atlas-holder">
+      <canvas id="atlas-canvas" aria-label="Atlas graph"></canvas>
+      <div id="atlas-tooltip" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="process" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">How I work</span><span lang="ru">Как я работаю</span></h2>
+    <ol class="steps">
+      <li class="card reveal">
+        <span class="case-num mono">01</span>
+        <h3><span lang="en">Call (30 min, free)</span><span lang="ru">Разговор (30 минут, бесплатно)</span></h3>
+        <p>
+          <span lang="en">I listen, ask questions, tell you what's realistically doable.
+          <a class="inline-link" href="https://cal.com/izramor" target="_blank" rel="noopener">Book a slot →</a></span>
+          <span lang="ru">Слушаю, задаю вопросы, говорю, что реально сделать.
+          <a class="inline-link" href="https://cal.com/izramor" target="_blank" rel="noopener">Выбрать время →</a></span>
+        </p>
+      </li>
+      <li class="card reveal">
+        <span class="case-num mono">02</span>
+        <h3><span lang="en">Locking the result</span><span lang="ru">Фиксация результата</span></h3>
+        <p>
+          <span lang="en">Short spec: what I do, what you get, when, for how much.</span>
+          <span lang="ru">Короткое ТЗ: что делаю, что получаете, когда и за сколько.</span>
+        </p>
+      </li>
+      <li class="card reveal">
+        <span class="case-num mono">03</span>
+        <h3><span lang="en">Work with intermediate demos</span><span lang="ru">Работа с промежуточными показами</span></h3>
+        <p>
+          <span lang="en">Every 2–3 days — a short update. No surprises.</span>
+          <span lang="ru">Каждые 2–3 дня — короткий апдейт. Без сюрпризов.</span>
+        </p>
+      </li>
+      <li class="card reveal">
+        <span class="case-num mono">04</span>
+        <h3><span lang="en">Handover and explanation</span><span lang="ru">Передача и объяснение</span></h3>
+        <p>
+          <span lang="en">Working software, explanation, questions answered for 2 weeks.</span>
+          <span lang="ru">Работающее ПО, объяснение, ответы на вопросы 2 недели.</span>
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="stack" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">Stack</span><span lang="ru">Технологии</span></h2>
+    <div class="chips mono">
+      <span class="tag">Cline</span><span class="tag">DeepSeek</span><span class="tag">OpenAI API</span>
+      <span class="tag">Ollama</span><span class="tag">LM Studio</span><span class="tag">Fooocus</span>
+      <span class="tag">kohya_ss</span><span class="tag">ACE-Step</span><span class="tag">ComfyUI</span>
+      <span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">PowerShell</span>
+      <span class="tag">WebRTC</span><span class="tag">Quartz</span><span class="tag">GitHub Actions</span>
+      <span class="tag">NSSM</span>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Cline</span><span class="msep">·</span><span>DeepSeek</span><span class="msep">·</span><span>OpenAI API</span><span class="msep">·</span>
+      <span>Ollama</span><span class="msep">·</span><span>LM Studio</span><span class="msep">·</span><span>Fooocus</span><span class="msep">·</span>
+      <span>kohya_ss</span><span class="msep">·</span><span>ACE-Step</span><span class="msep">·</span><span>ComfyUI</span><span class="msep">·</span>
+      <span>Node.js</span><span class="msep">·</span><span>Python</span><span class="msep">·</span><span>PowerShell</span><span class="msep">·</span>
+      <span>WebRTC</span><span class="msep">·</span><span>Quartz</span><span class="msep">·</span><span>GitHub Actions</span><span class="msep">·</span>
+      <span>NSSM</span><span class="msep">·</span>
+      <span>Cline</span><span class="msep">·</span><span>DeepSeek</span><span class="msep">·</span><span>OpenAI API</span><span class="msep">·</span>
+      <span>Ollama</span><span class="msep">·</span><span>LM Studio</span><span class="msep">·</span><span>Fooocus</span><span class="msep">·</span>
+      <span>kohya_ss</span><span class="msep">·</span><span>ACE-Step</span><span class="msep">·</span><span>ComfyUI</span><span class="msep">·</span>
+      <span>Node.js</span><span class="msep">·</span><span>Python</span><span class="msep">·</span><span>PowerShell</span><span class="msep">·</span>
+      <span>WebRTC</span><span class="msep">·</span><span>Quartz</span><span class="msep">·</span><span>GitHub Actions</span><span class="msep">·</span>
+      <span>NSSM</span><span class="msep">·</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">Get in touch</span><span lang="ru">Связаться</span></h2>
+    <p class="sec-sub">
+      <span lang="en">Task discussion is free. Projects from $50.</span>
+      <span lang="ru">Обсуждение задачи бесплатно. Проекты от 3 000 ₽.</span>
+    </p>
+    <ul class="contact-list">
+      <li>
+        <span class="contact-key mono">Email</span>
+        <a class="contact-val" href="mailto:frinog1@gmail.com">frinog1@gmail.com</a>
+      </li>
+      <li>
+        <span class="contact-key mono"><span lang="en">Book a call</span><span lang="ru">Записаться</span></span>
+        <a class="contact-val" href="https://cal.com/izramor" target="_blank" rel="noopener">cal.com/izramor</a>
+      </li>
+      <li>
+        <span class="contact-key mono">Telegram</span>
+        <a class="contact-val" href="https://t.me/Izramor" target="_blank" rel="noopener">@Izramor</a>
+      </li>
+      <li>
+        <span class="contact-key mono">GitHub</span>
+        <a class="contact-val" href="https://github.com/frinog1-a11y" target="_blank" rel="noopener">frinog1-a11y</a>
+      </li>
+    </ul>
+    <p class="price-note">
+      <span lang="en">Payment: crypto (USDT) + intermediary services. Details on request.</span>
+      <span lang="ru">Оплата: крипта (USDT) + сервисы-посредники. Детали по запросу.</span>
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="mono">
+      <span lang="en">© Izramor, 2026</span>
+      <span lang="ru">© Израмор, 2026</span>
+    </p>
+  </div>
+</footer>
+
+<div id="case-preview" aria-hidden="true">
+  <div class="cp-shot mono"><span lang="en">Preview coming soon</span><span lang="ru">Превью скоро</span></div>
+  <div class="cp-body">
+    <p class="cp-title"></p>
+    <p class="cp-line"></p>
+    <p class="cp-tags mono"></p>
+    <p class="cp-open mono"><span lang="en">Open →</span><span lang="ru">Открыть →</span></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+

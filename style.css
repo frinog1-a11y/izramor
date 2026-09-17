@@ -1060,9 +1060,11 @@ body.lang-ru [lang="en"] { display: none !important; }
 .atlas-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
-  color: var(--cream-muted);
-  margin-bottom: 16px;
+  gap: 18px;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(242,238,248,0.45);
 }
 
 .lg-item { display: flex; align-items: center; gap: 8px; }
@@ -1078,18 +1080,68 @@ body.lang-ru [lang="en"] { display: none !important; }
 .lg-creative { background: #8a7ab8; }
 .lg-skill    { background: #b86a8a; }
 
+/* drafting board: the atlas hangs framed on the wall of the workshop */
+
 .atlas-holder {
   position: relative;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: rgba(26,23,32,0.6);
-  box-shadow: inset 0 0 60px rgba(212,165,90,0.04);
+  padding: 20px;
+  border: 2px solid rgba(212,165,90,0.25);
+  border-radius: 8px;
+  background: rgba(14,13,18,0.5);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.4);
+}
+
+/* blueprint corner marks: two from the container, two from the extra spans */
+.atlas-holder::before,
+.atlas-holder::after,
+.atlas-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(212,165,90,0.5);
+  pointer-events: none;
+}
+
+.atlas-holder::before {
+  content: '';
+  top: 8px;
+  left: 8px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.atlas-holder::after {
+  content: '';
+  bottom: 8px;
+  right: 8px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.atlas-corner-tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
+.atlas-corner-bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
+
+/* sheet header inside the frame: figure label + legend */
+.atlas-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin: 0 0 12px;
+}
+
+.atlas-fig {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(212,165,90,0.6);
+  white-space: nowrap;
 }
 
 #atlas-canvas {
   display: block;
   width: 100%;
-  height: 560px;
+  height: 500px;
   cursor: default;
 }
 

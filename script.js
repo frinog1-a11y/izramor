@@ -532,8 +532,26 @@
       });
     }
 
+    function atlasCenterGraph() {
+      if (!atlasNodes.length) { return; }
+      var minX = Infinity;
+      var minY = Infinity;
+      var maxX = -Infinity;
+      var maxY = -Infinity;
+      atlasNodes.forEach(function (n) {
+        if (n.x < minX) { minX = n.x; }
+        if (n.x > maxX) { maxX = n.x; }
+        if (n.y < minY) { minY = n.y; }
+        if (n.y > maxY) { maxY = n.y; }
+      });
+      var dx = atlasW / 2 - (minX + maxX) / 2;
+      var dy = atlasH / 2 - (minY + maxY) / 2;
+      atlasNodes.forEach(function (n) { n.x += dx; n.y += dy; });
+    }
+
     function atlasLayout() {
       for (var i = 0; i < 200; i++) { atlasStep(1); }
+      atlasCenterGraph();
     }
 
     function isNeighbour(a, b) {
@@ -602,12 +620,14 @@
       atlasTooltip.classList.add('is-on');
       var tw = atlasTooltip.offsetWidth;
       var th = atlasTooltip.offsetHeight;
-      var left = x + 14;
-      var top = y + 14;
-      if (left + tw > atlasW - 8) { left = x - tw - 14; }
-      if (top + th > atlasH - 8) { top = y - th - 14; }
-      if (left < 8) { left = 8; }
-      if (top < 8) { top = 8; }
+      var offX = atlasCanvas.offsetLeft;
+      var offY = atlasCanvas.offsetTop;
+      var left = x + 14 + offX;
+      var top = y + 14 + offY;
+      if (x + 14 + tw > atlasW - 8) { left = x - tw - 14 + offX; }
+      if (y + 14 + th > atlasH - 8) { top = y - th - 14 + offY; }
+      if (left < offX + 8) { left = offX + 8; }
+      if (top < offY + 8) { top = offY + 8; }
       atlasTooltip.style.left = left + 'px';
       atlasTooltip.style.top = top + 'px';
     }

@@ -285,81 +285,152 @@
   <div class="wrap">
     <h2><span lang="en">Cases</span><span lang="ru">Кейсы</span></h2>
 
-    <article class="card case-card reveal">
-      <span class="case-num mono">01</span>
-      <h3><span lang="en">Baby Monitor — two-way audio on a home PC</span><span lang="ru">Видеокамера — видеоняня на домашнем ПК</span></h3>
-      <p>
-        <span lang="en">WebRTC two-way audio, Windows service autostart, HTTPS, PWA on phone, motion notifications. 18 commits, $0.70 in API costs.</span>
-        <span lang="ru">Двустороннее аудио по WebRTC, автозапуск службой Windows, HTTPS, PWA на телефоне, уведомления о движении. 18 коммитов, $0,70 расходов на API.</span>
-      </p>
-      <div class="tags mono">
-        <span class="tag">WebRTC</span><span class="tag">Node.js</span><span class="tag">NSSM</span><span class="tag">PWA</span><span class="tag">Basic Auth</span>
-      </div>
-      <a class="case-link mono" href="cases/dev/01-videokamera.en.md" lang="en">Open →</a>
-      <a class="case-link mono" href="cases/dev/01-videokamera.ru.md" lang="ru">Открыть →</a>
-    </article>
+    <!--
+    CASES order = impact, not portfolio file order.
+    01 Knowledge base — live, real user
+    02 Baby Monitor — live, home use
+    03 Image pipeline — service
+    04 Music pipeline — service
+    05 Remote pipeline — service
+    06 Print layout — service
+    07 Mini-game — playable demo
+    08 Lorien — creative R&D
+    Do not reorder alphabetically.
+    -->
+
+    <div class="cases-grid">
 
     <article class="card case-card reveal">
-      <span class="case-num mono">02</span>
+      <span class="case-num mono">01</span>
       <h3><span lang="en">"Between the Lines of the Blueprint" — knowledge base</span><span lang="ru">«Между строк чертежа» — база знаний</span></h3>
       <p>
-        <span lang="en">Live site, 128 notes, AI pipeline "one field → ready note". Used daily.</span>
-        <span lang="ru">Живой сайт, 128 заметок, ИИ-конвейер «одно поле → готовая заметка». Используется ежедневно.</span>
+        <span lang="en">Live site, 128 notes, AI pipeline "one field → ready note". Used daily by a real user.</span>
+        <span lang="ru">Живой сайт, 128 заметок, ИИ-конвейер «одно поле → готовая заметка». Используется каждый день.</span>
       </p>
       <div class="tags mono">
         <span class="tag">Quartz</span><span class="tag">GitHub Actions</span><span class="tag">DeepSeek API</span><span class="tag">D3</span><span class="tag">TypeScript</span>
       </div>
       <div class="case-links">
         <a class="case-link mono" href="https://frinog1-a11y.github.io/normcontrol-kb/" target="_blank" rel="noopener"><span lang="en">Live site →</span><span lang="ru">Живой сайт →</span></a>
-        <a class="case-link mono" href="cases/dev/02-normcontrol-kb.en.md" lang="en">Open →</a>
-        <a class="case-link mono" href="cases/dev/02-normcontrol-kb.ru.md" lang="ru">Открыть →</a>
+        <a class="case-link mono" href="cases/dev/02-normcontrol-kb.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/02-normcontrol-kb.ru.md" lang="ru">Открыть кейс →</a>
+      </div>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">02</span>
+      <h3><span lang="en">Baby Monitor — two-way audio on a home PC</span><span lang="ru">Видеокамера — видеоняня на домашнем ПК</span></h3>
+      <p>
+        <span lang="en">WebRTC two-way audio, Windows service autostart, HTTPS, PWA on phone, motion notifications.</span>
+        <span lang="ru">Двустороннее аудио по WebRTC, автозапуск службой Windows, HTTPS, PWA на телефоне, уведомления о движении.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">WebRTC</span><span class="tag">Node.js</span><span class="tag">NSSM</span><span class="tag">PWA</span><span class="tag">Basic Auth</span>
+      </div>
+      <div class="case-links">
+        <a class="case-link mono" href="cases/dev/01-videokamera.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/01-videokamera.ru.md" lang="ru">Открыть кейс →</a>
       </div>
     </article>
 
     <article class="card case-card reveal">
       <span class="case-num mono">03</span>
-      <h3><span lang="en">Mini-game "Through the Ripple"</span><span lang="ru">Мини-игра «Сквозь Зыбь»</span></h3>
+      <h3><span lang="en">Image pipeline — style &amp; generation</span><span lang="ru">Пайплайн изображений — стиль и генерация</span></h3>
       <p>
-        <span lang="en">1,893 lines of JS, 5 bosses, procedural sound. Playable now.</span>
-        <span lang="ru">1 893 строки JS, 5 боссов, процедурный звук. Можно играть сейчас.</span>
+        <span lang="en">Train a LoRA on your style, generate via Fooocus. Prompt engineering, batch runs, quality control. Orchestrated through Cline. Generation runs fully local.</span>
+        <span lang="ru">Обучаю LoRA на вашем стиле, генерация через Fooocus. Промпт-инжиниринг, пакетные прогоны, контроль качества. Оркестрация через Cline. Генерация работает локально.</span>
       </p>
       <div class="tags mono">
-        <span class="tag">Canvas</span><span class="tag">Web Audio API</span><span class="tag">Vanilla JS</span>
+        <span class="tag">SDXL</span><span class="tag">kohya_ss</span><span class="tag">Fooocus</span><span class="tag">RTX 3060 Ti</span>
       </div>
       <div class="case-links">
-        <a class="case-link mono" href="https://frinog1-a11y.github.io/normcontrol-kb/echelon" target="_blank" rel="noopener"><span lang="en">Play →</span><span lang="ru">Играть →</span></a>
-        <a class="case-link mono" href="cases/dev/03-echelon-mini-game.en.md" lang="en">Open →</a>
-        <a class="case-link mono" href="cases/dev/03-echelon-mini-game.ru.md" lang="ru">Открыть →</a>
+        <a class="case-link mono" href="cases/dev/05-cline-art-music.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/05-cline-art-music.ru.md" lang="ru">Открыть кейс →</a>
       </div>
     </article>
 
     <article class="card case-card reveal">
       <span class="case-num mono">04</span>
-      <h3><span lang="en">Art &amp; Music pipeline</span><span lang="ru">Пайплайн арта и музыки</span></h3>
+      <h3><span lang="en">Music pipeline — prompts &amp; generation</span><span lang="ru">Пайплайн музыки — промпты и генерация</span></h3>
       <p>
-        <span lang="en">LoRA trained from scratch on 8 GB VRAM (50 frames, 11× speedup). 300 music tracks via ACE-Step. Fully local, no cloud.</span>
-        <span lang="ru">LoRA обучена с нуля на 8 ГБ VRAM (50 кадров, ускорение в 11 раз). 300 треков через ACE-Step. Полностью локально, без облаков.</span>
+        <span lang="en">Generate music via ACE-Step. Prompt engineering, batch runs, quality tuning, categorization. Music LoRA for a specific style. Orchestrated through Cline. Generation runs fully local.</span>
+        <span lang="ru">Генерация музыки через ACE-Step. Промпт-инжиниринг, пакетные прогоны, отладка качества, категоризация. Музыкальная LoRA под конкретный стиль. Оркестрация через Cline. Генерация работает локально.</span>
       </p>
       <div class="tags mono">
-        <span class="tag">SDXL</span><span class="tag">kohya_ss</span><span class="tag">Fooocus</span><span class="tag">ACE-Step</span><span class="tag">RTX 3060 Ti</span>
+        <span class="tag">ACE-Step</span><span class="tag">LoRA</span><span class="tag">Prompt Engineering</span><span class="tag">RTX 3060 Ti</span>
       </div>
-      <a class="case-link mono" href="cases/dev/05-cline-art-music.en.md" lang="en">Open →</a>
-      <a class="case-link mono" href="cases/dev/05-cline-art-music.ru.md" lang="ru">Открыть →</a>
+      <div class="case-links">
+        <a class="case-link mono" href="cases/dev/05-cline-art-music.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/05-cline-art-music.ru.md" lang="ru">Открыть кейс →</a>
+      </div>
     </article>
 
     <article class="card case-card reveal">
       <span class="case-num mono">05</span>
-      <h3><span lang="en">Game project production pipeline</span><span lang="ru">Производственный пайплайн игрового проекта</span></h3>
+      <h3><span lang="en">Remote work pipeline — phone → laptop → home PC</span><span lang="ru">Пайплайн «телефон → ноутбук → домашний ПК»</span></h3>
       <p>
-        <span lang="en">18 volumes of world documentation, kanban board, AI agents under result contract.</span>
-        <span lang="ru">18 томов документации мира, канбан-доска, ИИ-агенты по контракту результата.</span>
+        <span lang="en">Result delivery, Wake-on-LAN, remote streaming. 68 scripts coordinating devices.</span>
+        <span lang="ru">Доставка результатов, Wake-on-LAN, удалённый стриминг. 68 скриптов для координации устройств.</span>
       </p>
       <div class="tags mono">
-        <span class="tag">Cline</span><span class="tag">AGENTS.md</span><span class="tag">Wake-on-LAN</span><span class="tag">Ollama</span><span class="tag">Taildrop</span>
+        <span class="tag">Tailscale</span><span class="tag">Wake-on-LAN</span><span class="tag">Ollama</span><span class="tag">Taildrop</span>
       </div>
-      <a class="case-link mono" href="cases/dev/04-echelon-beyond.en.md" lang="en">Open →</a>
-      <a class="case-link mono" href="cases/dev/04-echelon-beyond.ru.md" lang="ru">Открыть →</a>
+      <div class="case-links">
+        <a class="case-link mono" href="cases/dev/07-echelon-remote-pipeline.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/07-echelon-remote-pipeline.ru.md" lang="ru">Открыть кейс →</a>
+      </div>
     </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">06</span>
+      <h3><span lang="en">Print layout for books and docs</span><span lang="ru">Печатная вёрстка книг и документов</span></h3>
+      <p>
+        <span lang="en">194 PDFs rebuilt with mirrored margins for book binding. TXT → PDF pipeline, page verification.</span>
+        <span lang="ru">194 PDF пересобраны с зеркальными полями под корешок. Конвейер TXT → PDF, проверки страниц.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">Python</span><span class="tag">PyMuPDF</span><span class="tag">Batch processing</span>
+      </div>
+      <div class="case-links">
+        <a class="case-link mono" href="cases/dev/06-txt-to-docx.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/06-txt-to-docx.ru.md" lang="ru">Открыть кейс →</a>
+      </div>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">07</span>
+      <h3><span lang="en">Mini-game "Through the Ripple"</span><span lang="ru">Мини-игра «Сквозь Зыбь»</span></h3>
+      <p>
+        <span lang="en">1,893 lines of JS, 5 bosses, procedural sound. Playable right here.</span>
+        <span lang="ru">1 893 строки JS, 5 боссов, процедурный звук. Можно играть прямо здесь.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">Canvas</span><span class="tag">Web Audio API</span><span class="tag">Vanilla JS</span>
+      </div>
+      <div class="case-links">
+        <a class="case-link mono" href="/echelon/"><span lang="en">Play →</span><span lang="ru">Играть →</span></a>
+        <a class="case-link mono" href="cases/dev/03-echelon-mini-game.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/dev/03-echelon-mini-game.ru.md" lang="ru">Открыть кейс →</a>
+      </div>
+    </article>
+
+    <article class="card case-card reveal">
+      <span class="case-num mono">08</span>
+      <h3><span lang="en">"Lorien" — portable AI personality</span><span lang="ru">«Лориэн» — переносимая личность ИИ</span></h3>
+      <p>
+        <span lang="en">AI assistant with persistent personality across sessions. 6 versions of memory blocks, 4 roles, activation codes.</span>
+        <span lang="ru">ИИ-ассистент с устойчивой личностью между сессиями. 6 версий кристаллов памяти, 4 роли, коды активации.</span>
+      </p>
+      <div class="tags mono">
+        <span class="tag">Prompt Engineering</span><span class="tag">Memory Design</span><span class="tag">LLM</span>
+      </div>
+      <div class="case-links">
+        <a class="case-link mono" href="cases/creative/01-lorien.en.md" lang="en">Open case →</a>
+        <a class="case-link mono" href="cases/creative/01-lorien.ru.md" lang="ru">Открыть кейс →</a>
+      </div>
+    </article>
+
+    </div>
 
   </div>
 </section>

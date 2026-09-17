@@ -30,10 +30,10 @@
 <nav id="side-nav" aria-label="Sections">
   <a href="#hero" data-target="hero"><span class="nav-num">01</span><span class="nav-name"><span lang="en">Hero</span><span lang="ru">Начало</span></span></a>
   <a href="#about" data-target="about"><span class="nav-num">02</span><span class="nav-name"><span lang="en">About</span><span lang="ru">О себе</span></span></a>
-  <a href="#services" data-target="services"><span class="nav-num">03</span><span class="nav-name"><span lang="en">Services</span><span lang="ru">Услуги</span></span></a>
-  <a href="#pricing" data-target="pricing"><span class="nav-num">04</span><span class="nav-name"><span lang="en">Pricing</span><span lang="ru">Цены</span></span></a>
-  <a href="#cases" data-target="cases"><span class="nav-num">05</span><span class="nav-name"><span lang="en">Cases</span><span lang="ru">Кейсы</span></span></a>
-  <a href="#atlas" data-target="atlas"><span class="nav-num">06</span><span class="nav-name"><span lang="en">Atlas</span><span lang="ru">Атлас</span></span></a>
+  <a href="#atlas" data-target="atlas"><span class="nav-num">03</span><span class="nav-name"><span lang="en">Atlas</span><span lang="ru">Атлас</span></span></a>
+  <a href="#services" data-target="services"><span class="nav-num">04</span><span class="nav-name"><span lang="en">Services</span><span lang="ru">Услуги</span></span></a>
+  <a href="#pricing" data-target="pricing"><span class="nav-num">05</span><span class="nav-name"><span lang="en">Pricing</span><span lang="ru">Цены</span></span></a>
+  <a href="#cases" data-target="cases"><span class="nav-num">06</span><span class="nav-name"><span lang="en">Cases</span><span lang="ru">Кейсы</span></span></a>
   <a href="#process" data-target="process"><span class="nav-num">07</span><span class="nav-name"><span lang="en">Process</span><span lang="ru">Процесс</span></span></a>
   <a href="#contact" data-target="contact"><span class="nav-num">08</span><span class="nav-name"><span lang="en">Contact</span><span lang="ru">Контакт</span></span></a>
 </nav>
@@ -134,6 +134,29 @@
           </li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line" aria-hidden="true"></div>
+
+<section id="atlas" class="sec">
+  <div class="wrap">
+    <h2><span lang="en">Atlas</span><span lang="ru">Атлас</span></h2>
+    <p class="sec-sub">
+      <span lang="en">Map of work: how cases and skills connect. Hover to highlight, click to open a case.</span>
+      <span lang="ru">Карта работ: как связаны кейсы и навыки. Наведите — подсветится, клик открывает кейс.</span>
+    </p>
+
+    <div class="atlas-legend mono">
+      <span class="lg-item"><span class="lg-dot lg-dev"></span><span lang="en">dev cases</span><span lang="ru">dev-кейсы</span></span>
+      <span class="lg-item"><span class="lg-dot lg-creative"></span><span lang="en">creative cases</span><span lang="ru">творческие кейсы</span></span>
+      <span class="lg-item"><span class="lg-dot lg-skill"></span><span lang="en">skills</span><span lang="ru">навыки</span></span>
+    </div>
+
+    <div class="atlas-holder">
+      <canvas id="atlas-canvas" aria-label="Atlas graph"></canvas>
+      <div id="atlas-tooltip" role="status" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -340,29 +363,6 @@
       <a class="case-link mono" href="cases/dev/04-echelon-beyond.ru.md" lang="ru">Открыть →</a>
     </article>
 
-  </div>
-</section>
-
-<div class="gold-line" aria-hidden="true"></div>
-
-<section id="atlas" class="sec">
-  <div class="wrap">
-    <h2><span lang="en">Atlas</span><span lang="ru">Атлас</span></h2>
-    <p class="sec-sub">
-      <span lang="en">Map of work: how cases and skills connect. Hover to highlight, click to open a case.</span>
-      <span lang="ru">Карта работ: как связаны кейсы и навыки. Наведите — подсветится, клик открывает кейс.</span>
-    </p>
-
-    <div class="atlas-legend mono">
-      <span class="lg-item"><span class="lg-dot lg-dev"></span><span lang="en">dev cases</span><span lang="ru">dev-кейсы</span></span>
-      <span class="lg-item"><span class="lg-dot lg-creative"></span><span lang="en">creative cases</span><span lang="ru">творческие кейсы</span></span>
-      <span class="lg-item"><span class="lg-dot lg-skill"></span><span lang="en">skills</span><span lang="ru">навыки</span></span>
-    </div>
-
-    <div class="atlas-holder">
-      <canvas id="atlas-canvas" aria-label="Atlas graph"></canvas>
-      <div id="atlas-tooltip" role="status" aria-live="polite"></div>
-    </div>
   </div>
 </section>
 

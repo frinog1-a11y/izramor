@@ -159,7 +159,7 @@
       });
     }, { threshold: 0.35 });
 
-    ['hero', 'about', 'services', 'pricing', 'cases', 'atlas', 'process', 'contact'].forEach(function (id) {
+    ['hero', 'about', 'atlas', 'services', 'pricing', 'cases', 'process', 'contact'].forEach(function (id) {
       var sec = document.getElementById(id);
       if (sec) { navObserver.observe(sec); }
     });

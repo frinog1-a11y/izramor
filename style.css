@@ -742,23 +742,26 @@ body.lang-ru [lang="en"] { display: none !important; }
 .cards-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 22px;
 }
 
 .cards-grid > .card {
+  /* no max-width: flex items grow to the grid edges, so the bench strip
+     above/below lines up with the first and last card exactly */
   flex: 1 1 calc(33.333% - 22px);
-  max-width: calc(33.333% - 22px);
   min-width: 268px;
 }
 
 .card {
   position: relative;
-  /* drawer facade: wood grain over the card colour */
-  background-color: var(--card);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='60'%3E%3Cfilter id='wg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.65 0 0 0 0 0.35 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='300' height='60' filter='url(%23wg)'/%3E%3C/svg%3E");
-  background-size: 300px 60px;
-  background-repeat: repeat;
+  /* drawer facade: warm wood, grain clearly readable */
+  background-color: #241e29;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='60'%3E%3Cfilter id='wg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.62 0 0 0 0 0.30 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='300' height='60' filter='url(%23wg)'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #2a2230 0%, #241e29 100%);
+  background-size: 300px 60px, 100% 100%;
+  background-repeat: repeat, no-repeat;
   border: 1px solid rgba(212,165,90,0.2);
   border-top-color: rgba(212,165,90,0.25);
   border-radius: 4px;
@@ -968,8 +971,8 @@ body.lang-ru [lang="en"] { display: none !important; }
 .cases-grid > .case-card {
   display: flex;
   flex-direction: column;
+  /* no max-width: rows stretch to the grid edges (strip alignment) */
   flex: 1 1 calc(25% - 22px);
-  max-width: calc(25% - 22px);
   min-width: 236px;
   margin-bottom: 0;
 }
@@ -1036,9 +1039,13 @@ body.lang-ru [lang="en"] { display: none !important; }
   margin: 0;
 }
 
-/* no metal handle on case cards — number and badge share the top rail */
+/* two rows on the case drawer front:
+   [ 01 ]                     [ badge ]
+                 [ handle ]                                          */
+.cases-grid .case-card { padding-top: 56px; }
+
 .cases-grid .card::before,
-.cases-grid .card::after { display: none; }
+.cases-grid .card::after { top: 34px; }
 
 .case-card p { max-width: 62em; }
 
@@ -1366,14 +1373,8 @@ body.lang-ru [lang="en"] { display: none !important; }
 
 @media (max-width: 1100px) {
   #side-nav { display: none; }
-  .cards-grid > .card {
-    flex-basis: calc(50% - 22px);
-    max-width: calc(50% - 22px);
-  }
-  .cases-grid > .case-card {
-    flex-basis: calc(50% - 22px);
-    max-width: calc(50% - 22px);
-  }
+  .cards-grid > .card { flex-basis: calc(50% - 22px); }
+  .cases-grid > .case-card { flex-basis: calc(50% - 22px); }
 }
 
 @media (max-width: 768px) {
@@ -1381,8 +1382,8 @@ body.lang-ru [lang="en"] { display: none !important; }
   .wrap { padding: 0 20px; }
   .sec { padding: 72px 0; }
   .sec::before, .sec::after { display: none; }
-  .cards-grid > .card { flex-basis: 100%; max-width: 100%; min-width: 0; }
-  .cases-grid > .case-card { flex-basis: 100%; max-width: 100%; min-width: 0; }
+  .cards-grid > .card { flex-basis: 100%; min-width: 0; }
+  .cases-grid > .case-card { flex-basis: 100%; min-width: 0; }
   .badge { display: none; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .stats li { padding: 0 16px; }

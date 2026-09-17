@@ -65,6 +65,21 @@ body::before {
   50%      { opacity: 0.7; }
 }
 
+/* --- wood grain, a whisper (Midnight Atelier: wood, brass, glass) -------- */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.5' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.65 0 0 0 0 0.35 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23w)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
 .mono {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -516,7 +531,16 @@ body.lang-ru [lang="en"] { display: none !important; }
   left: 0;
   width: 32px;
   height: 2px;
-  background: var(--amber);
+  /* small wooden pull: warm grain, darker at the ends */
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(88,64,32,0.55) 0 2px,
+      rgba(88,64,32,0) 2px 5px,
+      rgba(88,64,32,0.3) 5px 6px,
+      rgba(88,64,32,0) 6px 11px),
+    linear-gradient(90deg,
+      #8a6a3a 0%, #d4a55a 25%, #e8bf7a 50%, #d4a55a 75%, #8a6a3a 100%);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.35);
   transition: width 0.3s ease;
 }
 

@@ -876,6 +876,49 @@ body.lang-ru [lang="en"] { display: none !important; }
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
+/* --- inner drawers: three small compartments inside every card ---------- */
+
+.cmp {
+  position: relative;
+  padding: 14px 14px 12px;
+  margin-bottom: 8px;
+  background: rgba(14,13,18,0.55);
+  border: 1px solid rgba(212,165,90,0.18);
+  border-radius: 3px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cmp:last-child { margin-bottom: 0; }
+
+/* mini handle: a small metal bar, no screws */
+.cmp::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 28px;
+  height: 4px;
+  margin-left: -14px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #e8bf7a 0%, #d4a55a 40%, #a07530 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.35),
+    0 1px 1px rgba(0,0,0,0.5);
+}
+
+/* the small drawers lift a touch when the big one slides out */
+.card:hover .cmp { transform: translateY(-1px); }
+
+/* the drawer owns the spacing: kill the outer margins of its content */
+.card .cmp h3 { margin: 0; }
+.card .cmp .tags { margin: 0; }
+.card .cmp .case-links { margin-top: 10px; }
+.card .cmp .case-links .case-link { margin-top: 0; }
+
+/* case cards: the meta drawer stays at the bottom of the cabinet */
+.cases-grid .cmp:last-child { margin-top: auto; }
+
 /* --- icons -------------------------------------------------------------- */
 
 .ico {

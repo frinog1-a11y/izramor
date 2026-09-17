@@ -619,6 +619,60 @@ body.lang-ru [lang="en"] { display: none !important; }
 .about-list .case-link { margin-top: 0; }
 
 /* ==========================================================================
+   Workbench — the card grids sit on a solid wooden bench
+   ========================================================================== */
+
+.cards-grid,
+.cases-grid {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
+
+/* bench surface, lit from above */
+.cards-grid::before,
+.cases-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg,
+    var(--wood-dark) 0%,
+    var(--wood-mid) 25%,
+    var(--wood-warm) 50%,
+    var(--wood-mid) 75%,
+    var(--wood-dark) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    inset 0 -2px 0 rgba(0,0,0,0.35),
+    0 3px 7px rgba(0,0,0,0.45);
+}
+
+/* underframe under the drawers */
+.cards-grid::after,
+.cases-grid::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg,
+    #4a3520 0%,
+    var(--wood-dark) 25%,
+    var(--wood-mid) 50%,
+    var(--wood-dark) 75%,
+    #4a3520 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* ==========================================================================
    Cards
    ========================================================================== */
 

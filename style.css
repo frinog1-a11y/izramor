@@ -1024,13 +1024,17 @@ body.lang-ru [lang="en"] { display: none !important; }
 }
 
 /* inside case cards the number sits in the drawer's top row:
-   [ 01 ]            [ handle ]            [ badge ]            */
+   [ 01 ]                          [ badge ]                         */
 .cases-grid .case-num {
   position: absolute;
   top: 7px;
   left: 26px;
   margin: 0;
 }
+
+/* no metal handle on case cards — number and badge share the top rail */
+.cases-grid .card::before,
+.cases-grid .card::after { display: none; }
 
 .case-card p { max-width: 62em; }
 

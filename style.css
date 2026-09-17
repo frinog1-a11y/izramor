@@ -376,15 +376,14 @@ body.lang-ru [lang="en"] { display: none !important; }
   background: radial-gradient(circle at 50% 45%, var(--amber-soft) 0%, transparent 60%);
 }
 
-/* --- three conical lamps, hanging from the ceiling of the hero ----------- */
-/* decorative only: shades + soft bulbs, no light cones down the wall        */
+/* --- three conical lamps: warm cones of light with dust in the air ------- */
 
 .lamps {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 220px;
+  height: 520px;
   z-index: 1;
   pointer-events: none;
 }
@@ -392,14 +391,10 @@ body.lang-ru [lang="en"] { display: none !important; }
 .lamp {
   position: absolute;
   top: 0;
-  width: 200px;
-  height: 240px;
+  width: 500px;
+  height: 460px;
   transform-origin: 50% 0;
-  background: radial-gradient(circle at 50% 74px,
-    rgba(212,165,90,0.3) 0%,
-    rgba(212,165,90,0.11) 36%,
-    transparent 80px);
-  animation: lampSway 8s ease-in-out infinite;
+  animation: lampSway 7s ease-in-out infinite;
 }
 
 /* wire up to the ceiling */
@@ -409,38 +404,102 @@ body.lang-ru [lang="en"] { display: none !important; }
   top: 0;
   left: 50%;
   width: 1px;
-  height: 40px;
+  height: 30px;
   margin-left: -0.5px;
   background: #3a3545;
 }
 
-/* conical shade, dark metal, amber rim, bulb glowing at the mouth */
+/* shade: small conical metal cup with an amber rim */
 .lamp::after {
   content: '';
   position: absolute;
-  top: 40px;
+  top: 30px;
   left: 50%;
-  width: 56px;
-  height: 34px;
-  margin-left: -28px;
-  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
-  background:
-    radial-gradient(60px 26px at 50% 100%,
-      rgba(232,191,122,0.55) 0%,
-      rgba(212,165,90,0.15) 45%,
-      transparent 78%),
-    linear-gradient(180deg, #34303f 0%, #2a2635 45%, #221f2c 100%);
-  border-top: 1px solid rgba(212,165,90,0.45);
+  width: 40px;
+  height: 30px;
+  margin-left: -20px;
+  clip-path: polygon(34% 0, 66% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, #34303f 0%, #2a2635 55%, #221f2c 100%);
+  border-top: 1px solid rgba(212,165,90,0.5);
+}
+
+/* the cone of light: trapezoid, wider at the bottom, softly fading out */
+.lamp-cone {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  width: 500px;
+  height: 400px;
+  margin-left: -250px;
+  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg,
+    rgba(212,165,90,0.18) 0%,
+    rgba(212,165,90,0.08) 40%,
+    rgba(212,165,90,0.02) 80%,
+    transparent 100%);
+  filter: blur(2px);
+  animation: coneBreath 6s ease-in-out infinite;
+}
+
+/* the bulb, glowing just under the shade */
+.lamp-cone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: #e8bf7a;
+  box-shadow: 0 0 16px 5px rgba(232,191,122,0.5);
+}
+
+/* dust: tiny motes drifting slowly down inside the cone */
+.lamp-cone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 46% 6%, rgba(212,165,90,0.6), transparent 70%),
+    radial-gradient(1.2px 1.2px at 52% 22%, rgba(212,165,90,0.5), transparent 70%),
+    radial-gradient(1.6px 1.6px at 44% 37%, rgba(212,165,90,0.55), transparent 70%),
+    radial-gradient(1.2px 1.2px at 58% 51%, rgba(212,165,90,0.45), transparent 70%),
+    radial-gradient(1.4px 1.4px at 47% 66%, rgba(212,165,90,0.5), transparent 70%),
+    radial-gradient(1.1px 1.1px at 55% 79%, rgba(212,165,90,0.4), transparent 70%),
+    radial-gradient(1.5px 1.5px at 42% 88%, rgba(212,165,90,0.45), transparent 70%),
+    radial-gradient(1.2px 1.2px at 61% 14%, rgba(212,165,90,0.45), transparent 70%),
+    radial-gradient(1.3px 1.3px at 38% 45%, rgba(212,165,90,0.45), transparent 70%),
+    radial-gradient(1.1px 1.1px at 64% 63%, rgba(212,165,90,0.4), transparent 70%),
+    radial-gradient(1.4px 1.4px at 49% 96%, rgba(212,165,90,0.4), transparent 70%),
+    radial-gradient(1.2px 1.2px at 33% 26%, rgba(212,165,90,0.35), transparent 70%);
+  background-size: 100% 420px;
+  background-repeat: repeat;
+  animation: dustFall 18s linear infinite;
 }
 
 @keyframes lampSway {
-  0%, 100% { transform: rotate(-0.8deg); }
-  50%      { transform: rotate(0.8deg); }
+  0%, 100% { transform: rotate(-0.6deg); }
+  50%      { transform: rotate(0.6deg); }
 }
 
-.lamp-1 { left: calc(18% - 100px); animation-delay: -1.4s; }
-.lamp-2 { left: calc(50% - 100px); animation-delay: -3.9s; }
-.lamp-3 { left: calc(82% - 100px); animation-delay: -6.2s; }
+@keyframes coneBreath {
+  0%, 100% { opacity: 0.9; }
+  50%      { opacity: 1; }
+}
+
+@keyframes dustFall {
+  from { transform: translateY(-420px); }
+  to   { transform: translateY(0); }
+}
+
+.lamp-1 { left: calc(22% - 250px); animation-delay: -1.2s; }
+.lamp-2 { left: calc(50% - 250px); animation-delay: -3.4s; }
+.lamp-3 { left: calc(78% - 250px); animation-delay: -5.6s; }
+
+.lamp-1 .lamp-cone::after { animation-delay: -4s; }
+.lamp-2 .lamp-cone::after { animation-delay: -9s; }
+.lamp-3 .lamp-cone::after { animation-delay: -14s; }
 
 #dust-canvas {
   position: absolute;
@@ -1327,8 +1386,9 @@ body.lang-ru [lang="en"] { display: none !important; }
   #lang-switch { top: 14px; right: 14px; }
   .marquee-track { animation-duration: 40s; }
   body::before { animation: none; opacity: 0.7; }
-  .lamps { height: 180px; }
+  .lamps { height: 300px; }
   .lamp-1, .lamp-3 { display: none; }
+  .lamp-cone { width: 320px; height: 240px; margin-left: -160px; }
   .sheet-task, .sheet-map, .sheet-price, .sheet-workflow { margin: -22px auto -8px; }
   .card::before { width: 40px; margin-left: -20px; }
   .card::after { background-position: 12px 0, 76px 0; }
@@ -1348,6 +1408,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   html { scroll-behavior: auto; }
   body::before { animation: none; }
   .lamp { animation: none; }
+  .lamp-cone, .lamp-cone::after { animation: none; }
   .hero-name { animation: none; }
   .dot { animation: none; }
   .marquee-track { animation: none; }

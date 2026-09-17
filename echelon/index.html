@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Through the Ripple — Mini-game by Izramor</title>
+<meta name="description" content="1,893 lines of JS. 5 bosses. Procedural sound. Playable in the browser.">
+<meta property="og:title" content="Through the Ripple — Mini-game">
+<meta property="og:description" content="1,893 lines of JS. 5 bosses. Procedural sound. Playable in the browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://frinog1-a11y.github.io/izramor/echelon/">
+<meta name="theme-color" content="#0e0d12">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .echelon-page { overflow: hidden; }
+
+  .echelon-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 20px;
+    background: var(--wood);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .echelon-bar a {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .echelon-bar a:hover {
+    border-bottom-color: var(--amber);
+    color: var(--cream);
+  }
+
+  .echelon-frame {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    border: 0;
+    display: block;
+    background: var(--ink);
+  }
+
+  @media (max-width: 520px) {
+    .echelon-bar { padding: 0 12px; }
+    .echelon-bar a { font-size: 11px; letter-spacing: 0.03em; }
+  }
+</style>
+</head>
+<body class="lang-en echelon-page">
+
+<div class="echelon-bar">
+  <a href="../"><span lang="en">← Back to portfolio</span><span lang="ru">← Назад в портфолио</span></a>
+  <a href="https://frinog1-a11y.github.io/normcontrol-kb/echelon" target="_blank" rel="noopener"><span lang="en">Open fullscreen ↗</span><span lang="ru">Открыть на весь экран ↗</span></a>
+</div>
+
+<iframe class="echelon-frame"
+        src="https://frinog1-a11y.github.io/normcontrol-kb/echelon"
+        title="Through the Ripple — mini-game"
+        allowfullscreen></iframe>
+
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem('izramor-lang');
+    var value = (stored === 'ru') ? 'ru' : 'en';
+    document.body.classList.toggle('lang-ru', value === 'ru');
+    document.body.classList.toggle('lang-en', value === 'en');
+    document.documentElement.setAttribute('lang', value);
+  } catch (e) { /* storage disabled — keep EN */ }
+})();
+</script>
+
+</body>
+</html>

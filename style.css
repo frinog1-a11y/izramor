@@ -453,6 +453,31 @@ body.lang-ru [lang="en"] { display: none !important; }
   font-weight: 500;
 }
 
+.about-public { margin-top: 30px; }
+
+.about-label {
+  color: var(--amber);
+  margin: 22px 0 6px;
+}
+
+.about-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--cream);
+}
+
+.about-list .case-link { margin-top: 0; }
+
 /* ==========================================================================
    Cards
    ========================================================================== */

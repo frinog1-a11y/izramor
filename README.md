@@ -30,7 +30,7 @@ mono tags, growing underlines on headings, draft corners on sections, custom cur
 
 ## Atlas
 
-Interactive map of work: 23 nodes (12 cases + 11 skills) and 43 edges (36 case ↔ skill, 7 case ↔ case).
+Interactive map of work: 23 nodes (12 cases + 11 skills) and 42 edges (35 case ↔ skill, 7 case ↔ case).
 Canvas 2D, devicePixelRatio-aware, force-directed layout, hover dimming, tooltips, click to open a case.
 
 ## Languages
@@ -64,7 +64,7 @@ Pushing to the `main` branch of `frinog1-a11y/izramor` publishes the site throug
 Дизайн: тёмная «ночная мастерская» — чернильный фон, тёплый янтарный акцент, карточки-ящики,
 золотые линии-разделители, монопространственные теги, чертёжные уголки секций.
 
-Atlas — интерактивный граф: 23 узла (12 кейсов и 11 навыков) и 43 связи; Canvas 2D, hover-подсветка,
+Atlas — интерактивный граф: 23 узла (12 кейсов и 11 навыков) и 42 связи; Canvas 2D, hover-подсветка,
 тултипы, клик открывает кейс.
 
 Языки: EN по умолчанию, выбор сохраняется в `localStorage` (`izramor-lang`).

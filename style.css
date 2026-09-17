@@ -1010,7 +1010,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   border-color: var(--amber);
 }
 
-.badge-home {
+.badge-use {
   background: transparent;
   color: var(--amber);
   border-color: var(--amber);

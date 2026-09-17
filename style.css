@@ -74,7 +74,7 @@ body::before {
   50%      { opacity: 0.7; }
 }
 
-/* --- paper noise on the wall (engineering sheet, not flat digital colour) - */
+/* --- paper texture on the wall (seamless CSS ruling, no tiles) ---------- */
 
 body::after {
   content: '';
@@ -82,10 +82,18 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.65 0 0 0 0 0.35 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)'/%3E%3C/svg%3E");
-  background-size: 120px 120px;
-  background-repeat: repeat;
-  opacity: 0.025;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(242,238,248,0.015) 0px,
+      rgba(242,238,248,0.015) 1px,
+      transparent 1px,
+      transparent 5px),
+    repeating-linear-gradient(90deg,
+      rgba(242,238,248,0.010) 0px,
+      rgba(242,238,248,0.010) 1px,
+      transparent 1px,
+      transparent 7px);
+  opacity: 0.6;
   mix-blend-mode: overlay;
 }
 
@@ -755,13 +763,26 @@ body.lang-ru [lang="en"] { display: none !important; }
 
 .card {
   position: relative;
-  /* drawer facade: warm wood, grain clearly readable */
+  /* drawer facade: seamless CSS wood grain (a formula — no tiles, no seams) */
   background-color: #241e29;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='60'%3E%3Cfilter id='wg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.62 0 0 0 0 0.30 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='300' height='60' filter='url(%23wg)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(
+      180deg,
+      rgba(168,122,66,0.10) 0px,
+      rgba(168,122,66,0.10) 1px,
+      rgba(168,122,66,0.04) 1px,
+      rgba(168,122,66,0.04) 2px,
+      transparent 2px,
+      transparent 5px,
+      rgba(168,122,66,0.06) 5px,
+      rgba(168,122,66,0.06) 6px,
+      transparent 6px,
+      transparent 11px
+    ),
+    radial-gradient(ellipse 60px 8px at 30% 40%, rgba(168,122,66,0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 50px 6px at 70% 65%, rgba(168,122,66,0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 40px 5px at 45% 85%, rgba(168,122,66,0.06) 0%, transparent 100%),
     linear-gradient(180deg, #2a2230 0%, #241e29 100%);
-  background-size: 300px 60px, 100% 100%;
-  background-repeat: repeat, no-repeat;
   border: 1px solid rgba(212,165,90,0.2);
   border-top-color: rgba(212,165,90,0.25);
   border-radius: 4px;
@@ -773,6 +794,15 @@ body.lang-ru [lang="en"] { display: none !important; }
     inset 0 1px 0 rgba(255,255,255,0.04);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* each drawer gets its own cut of the grain */
+.card:nth-child(2n) {
+  background-position: 0 2px, 20% 30%, 70% 55%, 45% 75%, 0 0;
+}
+
+.card:nth-child(3n) {
+  background-position: 0 7px, 40% 25%, 60% 70%, 35% 90%, 0 0;
 }
 
 /* metal drawer handle, centred */

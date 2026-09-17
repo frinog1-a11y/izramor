@@ -254,11 +254,10 @@
   }
 
   /* ------------------------------------------------------------------------
-     7. Cursor glow and custom cursor (desktop only)
+     7. Custom cursor (desktop only)
      ---------------------------------------------------------------------- */
 
   if (finePointer) {
-    var glow = $('#cursor-glow');
     var ring = $('#cursor-ring');
     var pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     var ringSize = 8;
@@ -286,10 +285,6 @@
         if (ring) { ring.style.opacity = '1'; }
       }
       placeRing();
-
-      if (glow) {
-        glow.style.transform = 'translate(' + (pointer.x - 300) + 'px,' + (pointer.y - 300) + 'px)';
-      }
     }, { passive: true });
 
     var interactive = 'a, button, .card, .tag, .price-row, .contact-val';

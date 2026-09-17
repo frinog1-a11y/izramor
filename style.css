@@ -338,6 +338,72 @@ body.lang-ru [lang="en"] { display: none !important; }
   background: radial-gradient(circle at 50% 45%, var(--amber-soft) 0%, transparent 60%);
 }
 
+/* --- three conical lamps, hanging from the ceiling of the hero ----------- */
+/* decorative only: shades + soft bulbs, no light cones down the wall        */
+
+.lamps {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.lamp {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 240px;
+  transform-origin: 50% 0;
+  background: radial-gradient(circle at 50% 74px,
+    rgba(212,165,90,0.3) 0%,
+    rgba(212,165,90,0.11) 36%,
+    transparent 80px);
+  animation: lampSway 8s ease-in-out infinite;
+}
+
+/* wire up to the ceiling */
+.lamp::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 40px;
+  margin-left: -0.5px;
+  background: #3a3545;
+}
+
+/* conical shade, dark metal, amber rim, bulb glowing at the mouth */
+.lamp::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 56px;
+  height: 34px;
+  margin-left: -28px;
+  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+  background:
+    radial-gradient(60px 26px at 50% 100%,
+      rgba(232,191,122,0.55) 0%,
+      rgba(212,165,90,0.15) 45%,
+      transparent 78%),
+    linear-gradient(180deg, #34303f 0%, #2a2635 45%, #221f2c 100%);
+  border-top: 1px solid rgba(212,165,90,0.45);
+}
+
+@keyframes lampSway {
+  0%, 100% { transform: rotate(-0.8deg); }
+  50%      { transform: rotate(0.8deg); }
+}
+
+.lamp-1 { left: calc(18% - 100px); animation-delay: -1.4s; }
+.lamp-2 { left: calc(50% - 100px); animation-delay: -3.9s; }
+.lamp-3 { left: calc(82% - 100px); animation-delay: -6.2s; }
+
 #dust-canvas {
   position: absolute;
   inset: 0;
@@ -1070,6 +1136,8 @@ body.lang-ru [lang="en"] { display: none !important; }
   #lang-switch { top: 14px; right: 14px; }
   .marquee-track { animation-duration: 40s; }
   body::before { animation: none; opacity: 0.7; }
+  .lamps { height: 180px; }
+  .lamp-1, .lamp-3 { display: none; }
 }
 
 @media (max-width: 520px) {
@@ -1085,6 +1153,7 @@ body.lang-ru [lang="en"] { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   body::before { animation: none; }
+  .lamp { animation: none; }
   .hero-name { animation: none; }
   .dot { animation: none; }
   .marquee-track { animation: none; }

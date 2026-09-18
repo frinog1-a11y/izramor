@@ -762,6 +762,10 @@ body.lang-ru [lang="en"] { display: none !important; }
   min-width: 268px;
 }
 
+/* the first service card leads the section: bigger icon and headline */
+.cards-grid > .card:first-child .ico { width: 56px; height: 56px; }
+.cards-grid > .card:first-child h3 { font-size: 24px; }
+
 .card {
   position: relative;
   /* drawer facade: seamless CSS wood grain (a formula — no tiles, no seams) */
@@ -1048,10 +1052,21 @@ body.lang-ru [lang="en"] { display: none !important; }
 .cases-grid > .case-card {
   display: flex;
   flex-direction: column;
-  /* no max-width: rows stretch to the grid edges (strip alignment) */
-  flex: 1 1 calc(25% - 22px);
+  /* 3 per row, no max-width: rows stretch to the grid edges (strip alignment) */
+  flex: 1 1 calc(33.333% - 22px);
   min-width: 236px;
   margin-bottom: 0;
+}
+
+/* card 01 is the hero of the section: two columns wide, bigger headline */
+.cases-grid > .case-card:first-child {
+  flex: 1 1 calc(66.666% - 22px);
+  padding: 60px 26px 30px;
+}
+
+.cases-grid > .case-card:first-child h3 {
+  font-size: 28px;
+  line-height: 1.25;
 }
 
 .cases-grid .case-card h3 { font-size: 19px; }
@@ -1098,6 +1113,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   background: transparent;
   color: var(--cream-muted);
   border-color: var(--cream-muted);
+  font-size: 9px;
 }
 
 .case-num {
@@ -1337,6 +1353,19 @@ body.lang-ru [lang="en"] { display: none !important; }
   gap: 18px;
 }
 
+/* the four steps read as workshop notes: a big serif number, then the text */
+.steps .case-num {
+  font-family: var(--font-head);
+  font-size: 28px;
+  line-height: 1;
+  opacity: 1;
+  margin-bottom: 8px;
+}
+
+.steps h3 { font-size: 19px; }
+
+.steps p { font-size: 15px; }
+
 .steps > li:nth-child(2) { transition-delay: 80ms; }
 .steps > li:nth-child(3) { transition-delay: 160ms; }
 .steps > li:nth-child(4) { transition-delay: 240ms; }
@@ -1452,6 +1481,8 @@ body.lang-ru [lang="en"] { display: none !important; }
   #side-nav { display: none; }
   .cards-grid > .card { flex-basis: calc(50% - 22px); }
   .cases-grid > .case-card { flex-basis: calc(50% - 22px); }
+  /* the hero card stops spanning two columns on tablet */
+  .cases-grid > .case-card:first-child { flex-basis: calc(50% - 22px); }
 }
 
 @media (max-width: 768px) {
@@ -1461,6 +1492,8 @@ body.lang-ru [lang="en"] { display: none !important; }
   .sec::before, .sec::after { display: none; }
   .cards-grid > .card { flex-basis: 100%; min-width: 0; }
   .cases-grid > .case-card { flex-basis: 100%; min-width: 0; }
+  .cases-grid > .case-card:first-child { flex-basis: 100%; padding: 50px 22px 22px; }
+  .cases-grid > .case-card:first-child h3 { font-size: 24px; }
   .badge { display: none; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .stats li { padding: 0 16px; }

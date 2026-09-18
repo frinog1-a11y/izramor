@@ -8,6 +8,8 @@ Pure HTML + CSS + JS, no frameworks, no third-party JS. Only external resource: 
 
 - Site: https://frinog1-a11y.github.io/izramor/
 - Repository: https://github.com/frinog1-a11y/izramor
+- Portfolio repository: https://github.com/frinog1-a11y/portfolio
+- Portfolio site: https://frinog1-a11y.github.io/portfolio/
 
 ## Files
 
@@ -19,6 +21,13 @@ Pure HTML + CSS + JS, no frameworks, no third-party JS. Only external resource: 
 | `README.md` | this file |
 | `.nojekyll` | disables Jekyll processing on GitHub Pages |
 | `assets/` | case preview screenshots (shown on card hover) + `og:image` |
+
+## Case files
+
+The case and skill markdown no longer lives in this repository. It is published from
+https://github.com/frinog1-a11y/portfolio, and every "Open case" link and every Atlas node points at the Blob view
+there: EN files resolve to `.en.md`, RU files to `.ru.md`, following the active language. One copy means the two
+sets can no longer drift apart.
 
 ## Design system
 
@@ -90,6 +99,7 @@ Pushing to the `main` branch of `frinog1-a11y/izramor` publishes the site throug
 Чистый HTML + CSS + JS, без фреймворков. Единственный внешний ресурс — Google Fonts.
 
 Живой сайт: https://frinog1-a11y.github.io/izramor/ · Репозиторий: https://github.com/frinog1-a11y/izramor
+Портфолио: https://github.com/frinog1-a11y/portfolio · https://frinog1-a11y.github.io/portfolio/
 
 Дизайн: тёмная «ночная мастерская» — чернильный фон, тёплый янтарный акцент, карточки-ящики,
 золотые линии-разделители, монопространственные теги, чертёжные уголки секций.
@@ -98,3 +108,7 @@ Atlas — интерактивный граф: 23 узла (12 кейсов и 1
 тултипы, клик открывает кейс.
 
 Языки: EN по умолчанию, выбор сохраняется в `localStorage` (`izramor-lang`).
+
+Файлы кейсов и навыков (markdown) в этом репозитории больше не хранятся: они публикуются из
+https://github.com/frinog1-a11y/portfolio, ссылки «Открыть кейс» и узлы Atlas ведут на Blob-просмотр там —
+английские на `.en.md`, русские на `.ru.md`, по активному языку.

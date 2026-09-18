@@ -18,7 +18,7 @@ Pure HTML + CSS + JS, no frameworks, no third-party JS. Only external resource: 
 | `script.js` | Atlas force-directed graph, counters, scroll effects, cursor, language switch |
 | `README.md` | this file |
 | `.nojekyll` | disables Jekyll processing on GitHub Pages |
-| `assets/` | screenshots and previews (empty for now) |
+| `assets/` | case preview screenshots (shown on card hover) + `og:image` |
 
 ## Design system
 
@@ -46,6 +46,36 @@ python -m http.server 8080
 ```
 
 Then open http://localhost:8080 (a static server is needed so that relative links and fonts behave as on Pages).
+
+## Screenshots
+
+`npm run screenshots` (`node scripts/screenshot.js`) captures every preview into `assets/`: the
+public sites over HTTP, and this machine's own work through `file://` — the Cline Kanban board on
+localhost, the LoRA dataset, the print-layout spread, the curated soundtrack, the repository tree.
+
+| Target | Source |
+|---|---|
+| `02-normcontrol-*.png` | the knowledge base (GitHub Pages) — case 01 |
+| `03-lora-before.png`, `03-lora-after.png` | one subject of the LoRA dataset: the rejected frame in `assets\lora\rejected\batch1` and the regenerated one in `assets\lora\train` — case 03 |
+| `04-music.png` | the four curated tracks of `…\Desktop\Echelon_Beyond_Music` — case 04 |
+| `05-remote-kanban.png` | the board on `http://localhost:3484/echelonbeyond` (started by `C:\EchelonBeyond\start-kanban.cmd`; skipped when it is not running) — case 05 |
+| `05-repo-structure.png` | `C:\EchelonBeyond` counted straight off disk — case 05 |
+| `06-print-layout.png` | pages 8+9 of the margin pipeline output (`…\Desktop\Black Library_margins\…`) as one spread — case 06 |
+| `07-mini-game*.png` | the demo hosted by this repository — case 07 |
+| `08-lorien.png` | the Lorien crystal map, built from the case text — case 08 |
+| `01-landing-*.png`, `01-og-hero.png` | this landing (`og:image`) |
+
+Requirements: Node, `npm install`, and a browser. If `npx playwright install chromium` is blocked
+(cdn.playwright.dev is not reachable from every network), the script drives an installed Chrome or
+Edge — same engine. `06-print-layout.png` also needs Python with PyMuPDF: `scripts/pdf-spread.py`
+puts two facing pages on one sheet, which is the only way mirrored inner/outer margins read as
+intended; without Python the shot falls back to a single page of the source PDF.
+
+`node scripts/screenshot.js <substring>` re-shoots only the targets whose file name matches.
+
+A case card takes its preview from `data-preview` (one image) or from `data-preview-pair` plus
+`data-preview-caps` / `data-preview-caps-ru` (two captioned frames — LoRA off/on, board/repo).
+Cards with neither keep the "Preview coming soon" plate.
 
 ## Deploy
 

@@ -1259,15 +1259,15 @@ body.lang-ru [lang="en"] { display: none !important; }
 .lg-creative { background: #8a7ab8; }
 .lg-skill    { background: #b86a8a; }
 
-/* drafting board: the atlas hangs framed on the wall of the workshop */
+/* drafting board: a diagram sheet pinned to the paper wall */
 
 .atlas-holder {
   position: relative;
   padding: 20px;
   border: 2px solid rgba(212,165,90,0.25);
   border-radius: 8px;
-  background: rgba(14,13,18,0.5);
-  box-shadow: inset 0 0 40px rgba(0,0,0,0.4);
+  background: rgba(14,13,18,0.25);
+  box-shadow: inset 0 0 26px rgba(0,0,0,0.22);
 }
 
 /* blueprint corner marks: two from the container, two from the extra spans */
@@ -1300,27 +1300,48 @@ body.lang-ru [lang="en"] { display: none !important; }
 .atlas-corner-tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
 .atlas-corner-bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
 
-/* sheet header inside the frame: figure label + legend */
+/* legend inside the frame, top-right */
 .atlas-head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 10px 16px;
   margin: 0 0 12px;
 }
 
+/* the figure label sits in the bottom-left corner of the sheet */
 .atlas-fig {
-  font-size: 11px;
+  position: absolute;
+  left: 30px;
+  bottom: 10px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   color: rgba(212,165,90,0.6);
   white-space: nowrap;
+  pointer-events: none;
+}
+
+/* handwritten caption hanging beside the frame */
+.atlas-note {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-family: 'Caveat', var(--font-mono);
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1;
+  color: rgba(212,165,90,0.5);
+  transform: rotate(-3deg);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 #atlas-canvas {
   display: block;
   width: 100%;
   height: 500px;
+  background: transparent;
   cursor: default;
 }
 

@@ -1577,6 +1577,57 @@ body.lang-ru [lang="en"] { display: none !important; }
 .cp-shot.has-shot .cp-shot-img { display: block; }
 .cp-shot.has-shot .cp-shot-text { display: none; }
 
+/* a two-frame preview (case 03: LoRA off/on, case 05: board/repo) — the plate
+   splits in two, each half keeps its own caption */
+.cp-pair {
+  display: none;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.cp-shot.has-pair {
+  border-style: solid;
+  padding: 0;
+  overflow: hidden;
+  background: none;
+}
+
+.cp-shot.has-pair .cp-pair { display: grid; }
+.cp-shot.has-pair .cp-shot-img,
+.cp-shot.has-pair .cp-shot-text { display: none; }
+
+.cp-pair-item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #000;
+}
+
+.cp-pair-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.cp-pair-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px 4px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--cream);
+  background: rgba(14,13,18,0.72);
+}
+
 .cp-title {
   font-weight: 600;
   font-size: 15px;

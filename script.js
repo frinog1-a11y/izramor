@@ -320,18 +320,53 @@
     var previewCard = null;
     var previewShot = $('.cp-shot', preview);
     var previewShotImg = $('.cp-shot-img', preview);
+    var previewPair = $('.cp-pair', preview);
+    var previewPairImgs = $$('.cp-pair-img', preview);
+    var previewPairCaps = $$('.cp-pair-cap', preview);
     var failedShots = {};
 
-    /* A card shows its real screenshot when it has data-preview; every other
-       card — and any screenshot that fails to load — keeps the dashed
-       "coming soon" plate. */
+    /* A card shows its real screenshot when it has data-preview. A card that
+       needs two frames of one job (data-preview-pair — LoRA off/on, board/repo)
+       splits the plate in two instead. Every other card, and any image that
+       fails to load, keeps the dashed "coming soon" plate. */
     function renderShot(src) {
       if (!previewShot) { return; }
+      previewShot.classList.remove('has-pair');
       var hasShot = !!src && !failedShots[src];
       previewShot.classList.toggle('has-shot', hasShot);
       if (hasShot && previewShotImg && previewShotImg.getAttribute('src') !== src) {
         previewShotImg.setAttribute('src', src);
       }
+    }
+
+    /* "one job, two frames" — captions follow the active language */
+    function pairSources(card) {
+      return (card.getAttribute('data-preview-pair') || '')
+        .split(',').map(function (s) { return s.trim(); })
+        .filter(function (s) { return !!s; });
+    }
+
+    function pairCaptions(card) {
+      var attr = currentLang() === 'ru' ? 'data-preview-caps-ru' : 'data-preview-caps';
+      var raw = card.getAttribute(attr) || card.getAttribute('data-preview-caps') || '';
+      return raw.split(',').map(function (s) { return s.trim(); });
+    }
+
+    function renderPair(card) {
+      var srcs = pairSources(card);
+      if (!previewPair || previewPairImgs.length < 2 || srcs.length !== 2) { return false; }
+      if (failedShots[srcs[0]] || failedShots[srcs[1]]) {
+        previewShot.classList.remove('has-pair');
+        return false;
+      }
+      var caps = pairCaptions(card);
+      previewPairImgs.forEach(function (img, i) {
+        if (img.getAttribute('src') !== srcs[i]) { img.setAttribute('src', srcs[i]); }
+      });
+      previewPairCaps.forEach(function (cap, i) { cap.textContent = caps[i] || ''; });
+      previewShot.classList.remove('has-shot');
+      previewShot.classList.add('has-pair');
+      return true;
     }
 
     if (previewShotImg) {
@@ -343,6 +378,15 @@
       });
     }
 
+    previewPairImgs.forEach(function (img) {
+      img.addEventListener('error', function () {
+        var src = img.getAttribute('src');
+        if (!src) { return; }
+        failedShots[src] = true;
+        if (previewCard && pairSources(previewCard).indexOf(src) !== -1) { fillPreview(previewCard); }
+      });
+    });
+
     function fillPreview(card) {
       var title = visibleText(card.querySelector('h3'));
       var line = visibleText(card.querySelector('p'));
@@ -350,7 +394,7 @@
       $('.cp-title', preview).textContent = title;
       $('.cp-line', preview).textContent = line.length > 160 ? line.slice(0, 157) + '…' : line;
       $('.cp-tags', preview).textContent = tags;
-      renderShot(card.getAttribute('data-preview') || '');
+      if (!renderPair(card)) { renderShot(card.getAttribute('data-preview') || ''); }
     }
 
     function placePreview(x, y) {

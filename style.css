@@ -905,6 +905,109 @@ body.lang-ru [lang="en"] { display: none !important; }
   box-shadow: 0 6px 9px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12);
 }
 
+/* --- the plant standing on the windowsill ------------------------------- */
+
+.wp {
+  position: absolute;
+  bottom: -2px;
+  left: 70px;
+  width: 60px;
+  height: 75px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* contact shadow on the sill */
+.wp-shadow {
+  position: absolute;
+  left: 14px;
+  bottom: -1px;
+  width: 32px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 55%, transparent 100%);
+  filter: blur(1.5px);
+}
+
+/* narrow arching leaves, all rising from one point */
+.wp-leaf {
+  position: absolute;
+  left: 50%;
+  bottom: 27px;
+  width: 6px;
+  border-radius: 60% 60% 45% 45% / 75% 75% 35% 35%;
+  background: linear-gradient(180deg, #5d7d5b 0%, #4a6a4a 60%, #3b563b 100%);
+  transform-origin: 50% 100%;
+}
+
+.wp-leaf-1 { height: 25px; margin-left: -3px; transform: rotate(-40deg); }
+.wp-leaf-2 { height: 22px; margin-left: -3px; transform: rotate(-25deg); }
+.wp-leaf-3 { height: 20px; margin-left: -3px; transform: rotate(-12deg); }
+.wp-leaf-4 { height: 18px; margin-left: -3px; transform: rotate(-2deg); }
+.wp-leaf-5 { height: 15px; margin-left: -3px; transform: rotate(10deg); }
+.wp-leaf-6 { height: 17px; margin-left: -3px; transform: rotate(22deg); }
+.wp-leaf-7 { height: 21px; margin-left: -3px; transform: rotate(35deg); }
+
+/* the longest leaf sways; nothing else moves */
+.wp-leaf-8 {
+  height: 25px;
+  margin-left: -3px;
+  transform: rotate(38deg);
+  animation: wpSway 7s ease-in-out 0.8s infinite;
+}
+
+@keyframes wpSway {
+  0%, 100% { transform: rotate(36.5deg); }
+  50%      { transform: rotate(39.5deg); }
+}
+
+/* dark green cluster where the leaves meet the soil */
+.wp-base {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: 12px;
+  height: 7px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: #3d5a3d;
+}
+
+/* terracotta pot: wider at the top, narrower at the bottom */
+.wp-pot {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 30px;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  background: linear-gradient(180deg, #a87a42 0%, #8a5a3a 45%, #6b4227 100%);
+}
+
+/* rim band */
+.wp-pot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #5f3c22;
+}
+
+/* soil */
+.wp-pot::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  right: 3px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2a1c12;
+  box-shadow: inset 0 -1px 2px rgba(0,0,0,0.6);
+}
+
 .about-body { max-width: 52em; }
 
 .about-body p { margin: 0 0 16px; color: var(--cream); }
@@ -1819,6 +1922,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   .lamp { animation: none; }
   .steam { animation: none; }
   .nw-pane-2::after, .nw-pane-3::after { animation: none; opacity: 0.8; }
+  .wp-leaf-8 { animation: none; }
   .lamp-cone, .lamp-cone::after { animation: none; }
   .hero-name { animation: none; }
   .dot { animation: none; }

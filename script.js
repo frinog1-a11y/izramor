@@ -805,8 +805,120 @@
     }
   }
 
+  /* ==========================================================================
+     Dust motes: tiny grains, visible only where the warm light falls
+     ========================================================================== */
 
+  var dustLayer = $('#dust-layer');
 
+  if (dustLayer) {
+    var dustCtx = null;
+    var dustW = 0;
+    var dustH = 0;
+    var dustParts = [];
+    var dustRaf = 0;
+    var dustTime = 0;
+    var dustLast = 0;
+
+    /* the same three light ellipses as body::before, as viewport fractions */
+    var DUST_ZONES = [
+      { cx: 0.5, cy: -0.2, rx: 0.8, ry: 0.5 },
+      { cx: 0.15, cy: -0.1, rx: 0.4, ry: 0.3 },
+      { cx: 0.85, cy: -0.1, rx: 0.4, ry: 0.3 }
+    ];
+
+    function dustIllumination(x, y) {
+      var best = 0;
+      for (var i = 0; i < DUST_ZONES.length; i++) {
+        var z = DUST_ZONES[i];
+        var dx = (x / dustW - z.cx) / z.rx;
+        var dy = (y / dustH - z.cy) / z.ry;
+        var v = 1 - Math.sqrt(dx * dx + dy * dy);
+        if (v > best) { best = v; }
+      }
+      return best > 0 ? best * best : 0;
+    }
+
+    function dustSize() {
+      dustW = dustLayer.clientWidth || window.innerWidth;
+      dustH = dustLayer.clientHeight || window.innerHeight;
+      dustCtx = fitCanvas(dustLayer, dustW, dustH);
+    }
+
+    function dustSeed() {
+      var count = (window.innerWidth < 768) ? 34 : 70;
+      dustParts = [];
+      for (var i = 0; i < count; i++) {
+        dustParts.push({
+          x: Math.random() * dustW,
+          y: Math.random() * dustH,
+          r: 0.5 + Math.random(),
+          base: 0.3 + Math.random() * 0.35,
+          vy: 0.05 + Math.random() * 0.1,
+          sway: 0.3 + Math.random() * 0.7,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    function dustDraw(dt) {
+      if (!dustCtx) { return; }
+      dustCtx.clearRect(0, 0, dustW, dustH);
+      for (var i = 0; i < dustParts.length; i++) {
+        var p = dustParts[i];
+        if (dt) {
+          p.y -= p.vy * dt;
+          p.x += Math.sin(dustTime * 0.0006 + p.phase) * p.sway * 0.12;
+          if (p.y < -4) { p.y = dustH + 4; p.x = Math.random() * dustW; }
+          if (p.x < -4) { p.x = dustW + 4; }
+          if (p.x > dustW + 4) { p.x = -4; }
+        }
+        var alpha = p.base * dustIllumination(p.x, p.y);
+        if (alpha < 0.02) { continue; }
+        dustCtx.fillStyle = 'rgba(212,165,90,' + alpha.toFixed(3) + ')';
+        dustCtx.beginPath();
+        dustCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        dustCtx.fill();
+      }
+    }
+
+    function dustLoop(ts) {
+      var dt = dustLast ? Math.min(3, (ts - dustLast) / 16.67) : 1;
+      dustLast = ts || 0;
+      dustTime = ts || 0;
+      dustDraw(dt);
+      dustRaf = window.requestAnimationFrame(dustLoop);
+    }
+
+    function dustStart() {
+      if (reduceMotion || dustRaf || !dustCtx || document.hidden) { return; }
+      dustLast = 0;
+      dustRaf = window.requestAnimationFrame(dustLoop);
+    }
+
+    function dustStop() {
+      if (dustRaf) { window.cancelAnimationFrame(dustRaf); dustRaf = 0; }
+    }
+
+    dustSize();
+    dustSeed();
+    dustDraw(0);
+    if (!reduceMotion) { dustStart(); }
+
+    var dustResizeTimer = 0;
+    window.addEventListener('resize', function () {
+      if (dustResizeTimer) { window.clearTimeout(dustResizeTimer); }
+      dustResizeTimer = window.setTimeout(function () {
+        dustSize();
+        dustSeed();
+        dustDraw(0);
+      }, 200);
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { dustStop(); } else { dustStart(); }
+    });
+  }
 
 
 

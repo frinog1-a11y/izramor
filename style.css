@@ -118,7 +118,7 @@ body::after {
 .sec {
   position: relative;
   z-index: 1;
-  padding: 104px 0;
+  padding: 68px 0;
 }
 
 .sec h2 {
@@ -127,7 +127,7 @@ body::after {
   font-size: clamp(32px, 5vw, 48px);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   position: relative;
   padding-bottom: 14px;
 }
@@ -147,7 +147,7 @@ body::after {
 
 .sec-sub {
   color: var(--cream-muted);
-  margin: -12px 0 34px;
+  margin: -10px 0 24px;
   max-width: 46em;
 }
 
@@ -168,8 +168,11 @@ body::after {
 /* --- engineering sheets pinned to the paper wall ------------------------- */
 
 .pinned-sheet {
-  position: relative;
-  z-index: 1;
+  /* pinned to the wall right beside its section heading */
+  position: absolute;
+  top: 21px;
+  right: max(20px, calc((100% - 1120px) / 2 + 32px));
+  z-index: 2;
   max-width: 200px;
   padding: 8px 12px;
   background: rgba(242,238,248,0.92);
@@ -197,15 +200,11 @@ body::after {
   box-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
-/* pinned by hand: each note hangs a little differently */
-/* TASK note hangs right above the About heading, aligned with the content column */
-.sheet-task {
-  margin: -26px auto -84px max(32px, calc((100% - 1120px) / 2 + 32px));
-  transform: rotate(-1.5deg);
-}
-.sheet-map      { margin: -34px 12% -14px auto;  transform: rotate(1.2deg); }
-.sheet-price    { margin: -34px auto -14px 58%;  transform: rotate(-1deg); }
-.sheet-workflow { margin: -34px 22% -14px auto;  transform: rotate(1.6deg); }
+/* pinned by hand: each note hangs at its own angle */
+.sheet-task     { transform: rotate(-1.5deg); }
+.sheet-map      { transform: rotate(1.2deg); }
+.sheet-price    { transform: rotate(-1deg); }
+.sheet-workflow { transform: rotate(1.6deg); }
 
 /* --- language switching ------------------------------------------------- */
 
@@ -363,11 +362,11 @@ body.lang-ru [lang="en"] { display: none !important; }
    ========================================================================== */
 
 .hero {
-  min-height: 75vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
-  padding-top: 140px;
-  padding-bottom: 60px;
+  padding-top: 124px;
+  padding-bottom: 48px;
   overflow: hidden;
 }
 
@@ -558,7 +557,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   display: flex;
   flex-wrap: wrap;
   gap: 0;
-  margin: 0 0 24px;
+  margin: 0 0 32px;
   padding: 0;
 }
 
@@ -653,6 +652,8 @@ body.lang-ru [lang="en"] { display: none !important; }
    About
    ========================================================================== */
 
+#about { padding-top: 48px; }
+
 .about-body { max-width: 52em; }
 
 .about-body p { margin: 0 0 16px; color: var(--cream); }
@@ -664,7 +665,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   font-weight: 500;
 }
 
-.about-public { margin-top: 30px; }
+.about-public { margin-top: 22px; }
 
 .about-label {
   color: var(--amber);
@@ -1000,7 +1001,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px 14px;
+  padding: 15px 14px;
   border-bottom: 1px solid var(--border);
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
@@ -1333,7 +1334,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  gap: 18px;
 }
 
 .steps > li:nth-child(2) { transition-delay: 80ms; }
@@ -1349,7 +1350,7 @@ body.lang-ru [lang="en"] { display: none !important; }
 .marquee {
   position: relative;
   overflow: hidden;
-  padding: 18px 0;
+  padding: 13px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
@@ -1393,7 +1394,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   display: flex;
   align-items: baseline;
   gap: 20px;
-  padding: 16px 14px;
+  padding: 13px 14px;
   border-bottom: 1px solid var(--border);
   transition: background 0.25s ease;
 }
@@ -1419,7 +1420,7 @@ body.lang-ru [lang="en"] { display: none !important; }
 .footer {
   position: relative;
   z-index: 1;
-  padding: 34px 0 44px;
+  padding: 26px 0 32px;
   border-top: 1px solid var(--border);
 }
 
@@ -1474,7 +1475,8 @@ body.lang-ru [lang="en"] { display: none !important; }
   .lamps { height: 200px; }
   .lamp-1, .lamp-3 { display: none; }
   .lamp-cone { width: 200px; height: 160px; margin-left: -100px; }
-  .sheet-task, .sheet-map, .sheet-price, .sheet-workflow { margin: -22px auto -8px; }
+  .sheet-task, .sheet-map, .sheet-price, .sheet-workflow { margin: 0; }
+  .pinned-sheet { max-width: 150px; font-size: 10px; right: 14px; top: 18px; }
   .card::before { width: 40px; margin-left: -20px; }
   .card::after { background-position: 12px 0, 76px 0; }
 }

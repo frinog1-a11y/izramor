@@ -514,11 +514,6 @@ body.lang-ru [lang="en"] { display: none !important; }
 
 /* --- two lived-in details: a coffee cup and a potted plant -------------- */
 
-.hero-prop {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-}
 
 /* the coffee cup standing on the workbench strip of the CASES grid */
 .coffee-cup {
@@ -617,64 +612,6 @@ body.lang-ru [lang="en"] { display: none !important; }
 }
 
 /* plant, top-right: the pot does not move, one leaf sways */
-.prop-plant {
-  right: 56px;
-  top: 96px;
-  width: 60px;
-  height: 78px;
-  opacity: 0.75;
-}
-
-.prop-plant .pot {
-  position: absolute;
-  left: 10px;
-  bottom: 0;
-  width: 40px;
-  height: 36px;
-  clip-path: polygon(6% 0, 94% 0, 82% 100%, 18% 100%);
-  background: linear-gradient(180deg, #a87a42 0%, #8a5a3a 45%, #6b4227 100%);
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.10);
-}
-
-/* soil */
-.prop-plant .pot::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 5px;
-  right: 5px;
-  height: 7px;
-  border-radius: 50%;
-  background: #2a1c12;
-  box-shadow: inset 0 -1px 2px rgba(0,0,0,0.6);
-}
-
-.prop-plant .leaf {
-  position: absolute;
-  bottom: 33px;
-  width: 6px;
-  border-radius: 50% 50% 38% 38%;
-  background: linear-gradient(180deg, #5d7d5b 0%, #4a6a4a 55%, #3b563b 100%);
-  transform-origin: 50% 100%;
-}
-
-.leaf-1 { left: 22px; height: 28px; transform: rotate(-14deg); }
-.leaf-2 { left: 28px; height: 33px; transform: rotate(-3deg); }
-.leaf-3 { left: 35px; height: 24px; transform: rotate(11deg); }
-
-/* the longest leaf, pivoting at its base */
-.leaf-4 {
-  left: 33px;
-  height: 40px;
-  transform-origin: 0% 100%;
-  transform: rotate(20deg);
-  animation: leafSway 7s ease-in-out 0.8s infinite;
-}
-
-@keyframes leafSway {
-  0%, 100% { transform: rotate(18.5deg); }
-  50%      { transform: rotate(21.5deg); }
-}
 
 #dust-canvas {
   position: absolute;
@@ -818,77 +755,124 @@ body.lang-ru [lang="en"] { display: none !important; }
 
 #about { padding-top: 48px; }
 
-/* --- the night window: it is late, and the workshop is still lit -------- */
+/* --- the night window: one lived-in scene in About ---------------------- */
 
 .night-window {
   position: absolute;
-  top: 50%;
+  top: 48px;
   right: 40px;
-  width: 240px;
-  height: 200px;
-  transform: translateY(-50%);
+  width: 236px;
+  height: 216px;
   z-index: 1;
   pointer-events: none;
-  padding: 14px;
-  border-radius: 3px;
-  background: linear-gradient(180deg, #3a2a1a 0%, #2a1e12 100%);
+  padding: 16px;
+  border: 2px solid #1a1208;
+  border-radius: 2px;
+  background: #3a2a1a;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.10),
-    inset 0 0 0 1px rgba(212,165,90,0.15),
-    inset 0 0 20px rgba(212,165,90,0.08),
-    0 12px 26px rgba(0,0,0,0.45);
+    inset 0 1px 0 #4a3a2a,
+    inset 0 -2px 0 rgba(0,0,0,0.5),
+    inset 0 0 12px rgba(0,0,0,0.6),
+    0 10px 24px rgba(0,0,0,0.45);
 }
 
-/* four panes, the 6px gaps between them are the mullions */
+/* four panes; the 8px gaps between them are the mullions */
 .nw-panes {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 6px;
+  gap: 8px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #3a2a1a 0%, #2a1e12 100%);
+  background: #3a2a1a;
 }
 
+/* milky way: a faint diagonal band across the whole sky */
+.nw-panes::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(60deg,
+    transparent 0%,
+    rgba(180,160,220,0.04) 40%,
+    rgba(180,160,220,0.06) 50%,
+    rgba(180,160,220,0.04) 60%,
+    transparent 100%);
+}
+
+/* every pane: night sky, glass reflection from the lamps inside */
 .nw-pane {
   position: relative;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+  background-image: linear-gradient(135deg, rgba(212,165,90,0.04) 0%, transparent 40%);
+  background-color: #0a0a1a;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.07),
+    inset -1px -1px 0 rgba(0,0,0,0.55),
+    inset 0 0 10px rgba(0,0,0,0.5);
 }
 
 .nw-pane-1 {
   background-image:
-    radial-gradient(1.2px 1.2px at 22% 24%, rgba(242,238,248,0.80), transparent 70%),
-    radial-gradient(1px 1px at 68% 58%, rgba(242,238,248,0.55), transparent 70%),
-    radial-gradient(1.4px 1.4px at 44% 78%, rgba(242,238,248,0.65), transparent 70%),
-    radial-gradient(0.9px 0.9px at 82% 34%, rgba(242,238,248,0.45), transparent 70%),
-    linear-gradient(180deg, #0a0a1a 0%, #101024 60%, #0e0e20 100%);
+    radial-gradient(1.6px 1.6px at 24% 22%, rgba(242,238,248,0.95), transparent 70%),
+    radial-gradient(1px 1px at 62% 44%, rgba(242,238,248,0.55), transparent 70%),
+    radial-gradient(1.2px 1.2px at 40% 74%, rgba(242,238,248,0.70), transparent 70%),
+    radial-gradient(1px 1px at 82% 30%, rgba(242,238,248,0.45), transparent 70%),
+    radial-gradient(1px 1px at 16% 58%, rgba(242,238,248,0.40), transparent 70%),
+    linear-gradient(135deg, rgba(212,165,90,0.04) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a1a 0%, #101830 55%, #1a1830 100%);
 }
 
 .nw-pane-2 {
   background-image:
-    radial-gradient(1.1px 1.1px at 32% 18%, rgba(242,238,248,0.60), transparent 70%),
-    radial-gradient(1.3px 1.3px at 62% 66%, rgba(242,238,248,0.70), transparent 70%),
-    radial-gradient(0.9px 0.9px at 78% 28%, rgba(242,238,248,0.45), transparent 70%),
-    linear-gradient(180deg, #0a0a1a 0%, #101024 60%, #0e0e20 100%);
+    radial-gradient(1.1px 1.1px at 30% 16%, rgba(242,238,248,0.60), transparent 70%),
+    radial-gradient(1.5px 1.5px at 64% 62%, rgba(242,238,248,0.80), transparent 70%),
+    radial-gradient(1px 1px at 78% 26%, rgba(242,238,248,0.45), transparent 70%),
+    radial-gradient(1px 1px at 44% 82%, rgba(242,238,248,0.50), transparent 70%),
+    linear-gradient(135deg, rgba(212,165,90,0.04) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a1a 0%, #101830 55%, #1a1830 100%);
 }
 
 .nw-pane-3 {
   background-image:
-    radial-gradient(1px 1px at 26% 62%, rgba(242,238,248,0.55), transparent 70%),
-    radial-gradient(1.4px 1.4px at 58% 30%, rgba(242,238,248,0.70), transparent 70%),
-    radial-gradient(0.9px 0.9px at 76% 74%, rgba(242,238,248,0.45), transparent 70%),
-    linear-gradient(180deg, #0a0a1a 0%, #101024 60%, #0e0e20 100%);
+    radial-gradient(1px 1px at 26% 60%, rgba(242,238,248,0.55), transparent 70%),
+    radial-gradient(1.6px 1.6px at 56% 28%, rgba(242,238,248,0.75), transparent 70%),
+    radial-gradient(1px 1px at 74% 72%, rgba(242,238,248,0.45), transparent 70%),
+    radial-gradient(1.2px 1.2px at 40% 40%, rgba(242,238,248,0.60), transparent 70%),
+    linear-gradient(135deg, rgba(212,165,90,0.04) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a1a 0%, #101830 55%, #1a1830 100%);
 }
 
 .nw-pane-4 {
   background-image:
-    radial-gradient(1.2px 1.2px at 36% 40%, rgba(242,238,248,0.65), transparent 70%),
-    radial-gradient(1px 1px at 70% 22%, rgba(242,238,248,0.50), transparent 70%),
-    radial-gradient(0.9px 0.9px at 52% 82%, rgba(242,238,248,0.45), transparent 70%),
-    linear-gradient(180deg, #0a0a1a 0%, #101024 60%, #0e0e20 100%);
+    radial-gradient(1.2px 1.2px at 34% 38%, rgba(242,238,248,0.65), transparent 70%),
+    radial-gradient(1px 1px at 70% 20%, rgba(242,238,248,0.50), transparent 70%),
+    radial-gradient(1px 1px at 52% 80%, rgba(242,238,248,0.45), transparent 70%),
+    radial-gradient(1px 1px at 18% 66%, rgba(242,238,248,0.40), transparent 70%),
+    linear-gradient(135deg, rgba(212,165,90,0.04) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a1a 0%, #101830 55%, #1a1830 100%);
 }
 
-/* two of the stars breathe, the rest stay still */
+/* the brightest star, with a tiny four-point sparkle */
+.nw-pane-4::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 66%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #f2eef8;
+  box-shadow:
+    0 0 6px 1px rgba(242,238,248,0.6),
+    0 -4px 0 -0.5px rgba(242,238,248,0.35),
+    0 4px 0 -0.5px rgba(242,238,248,0.35),
+    -4px 0 0 -0.5px rgba(242,238,248,0.35),
+    4px 0 0 -0.5px rgba(242,238,248,0.35);
+}
+
+/* only two stars breathe */
 .nw-pane-2::after,
 .nw-pane-3::after {
   content: '';
@@ -897,28 +881,28 @@ body.lang-ru [lang="en"] { display: none !important; }
   height: 2px;
   border-radius: 50%;
   background: #f2eef8;
-  box-shadow: 0 0 4px 1px rgba(242,238,248,0.5);
+  box-shadow: 0 0 5px 1px rgba(242,238,248,0.5);
   animation: starTwinkle 7s ease-in-out infinite;
 }
 
-.nw-pane-2::after { top: 26%; left: 60%; }
-.nw-pane-3::after { top: 62%; left: 32%; animation-duration: 8s; animation-delay: 2.6s; }
+.nw-pane-2::after { top: 24%; left: 58%; }
+.nw-pane-3::after { top: 60%; left: 30%; animation-duration: 8s; animation-delay: 2.6s; }
 
 @keyframes starTwinkle {
   0%, 100% { opacity: 0.5; }
   50%      { opacity: 0.9; }
 }
 
-/* wooden sill under the window */
+/* the sill: wide enough for a plant to stand on */
 .nw-sill {
   position: absolute;
-  left: -8px;
-  right: -8px;
-  bottom: -9px;
-  height: 9px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #6f4e2e 0%, #4a3520 45%, #2f2214 100%);
-  box-shadow: 0 3px 7px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.14);
+  left: -26px;
+  right: -26px;
+  bottom: -12px;
+  height: 10px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #4a3a2a 0%, #3a2a1a 45%, #2a1e12 100%);
+  box-shadow: 0 6px 9px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12);
 }
 
 .about-body { max-width: 52em; }
@@ -1813,7 +1797,6 @@ body.lang-ru [lang="en"] { display: none !important; }
   .lamps { height: 200px; }
   .lamp-1, .lamp-3 { display: none; }
   .lamp-cone { width: 200px; height: 160px; margin-left: -100px; }
-  .hero-prop { display: none; }
   .sheet-task, .sheet-map, .sheet-price, .sheet-workflow { margin: 0; }
   .pinned-sheet { max-width: 150px; font-size: 10px; right: 14px; top: 18px; }
   .card::before { width: 40px; margin-left: -20px; }
@@ -1834,7 +1817,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   html { scroll-behavior: auto; }
   body::before { animation: none; }
   .lamp { animation: none; }
-  .steam, .leaf-4 { animation: none; }
+  .steam { animation: none; }
   .nw-pane-2::after, .nw-pane-3::after { animation: none; opacity: 0.8; }
   .lamp-cone, .lamp-cone::after { animation: none; }
   .hero-name { animation: none; }

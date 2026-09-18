@@ -318,6 +318,30 @@
     var previewPos = { x: 0, y: 0 };
     var previewVisible = false;
     var previewCard = null;
+    var previewShot = $('.cp-shot', preview);
+    var previewShotImg = $('.cp-shot-img', preview);
+    var failedShots = {};
+
+    /* A card shows its real screenshot when it has data-preview; every other
+       card — and any screenshot that fails to load — keeps the dashed
+       "coming soon" plate. */
+    function renderShot(src) {
+      if (!previewShot) { return; }
+      var hasShot = !!src && !failedShots[src];
+      previewShot.classList.toggle('has-shot', hasShot);
+      if (hasShot && previewShotImg && previewShotImg.getAttribute('src') !== src) {
+        previewShotImg.setAttribute('src', src);
+      }
+    }
+
+    if (previewShotImg) {
+      previewShotImg.addEventListener('error', function () {
+        var src = previewShotImg.getAttribute('src');
+        if (!src) { return; }
+        failedShots[src] = true;
+        if (previewCard && previewCard.getAttribute('data-preview') === src) { renderShot(src); }
+      });
+    }
 
     function fillPreview(card) {
       var title = visibleText(card.querySelector('h3'));
@@ -326,6 +350,7 @@
       $('.cp-title', preview).textContent = title;
       $('.cp-line', preview).textContent = line.length > 160 ? line.slice(0, 157) + '…' : line;
       $('.cp-tags', preview).textContent = tags;
+      renderShot(card.getAttribute('data-preview') || '');
     }
 
     function placePreview(x, y) {

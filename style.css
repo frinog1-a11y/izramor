@@ -1557,6 +1557,26 @@ body.lang-ru [lang="en"] { display: none !important; }
   margin-bottom: 10px;
 }
 
+/* a real screenshot fills the plate; the dashed plate stays the fallback */
+.cp-shot.has-shot {
+  border-style: solid;
+  padding: 0;
+  overflow: hidden;
+  background: none;
+}
+
+.cp-shot-img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 5px;
+}
+
+.cp-shot.has-shot .cp-shot-img { display: block; }
+.cp-shot.has-shot .cp-shot-text { display: none; }
+
 .cp-title {
   font-weight: 600;
   font-size: 15px;

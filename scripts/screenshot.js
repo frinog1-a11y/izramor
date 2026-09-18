@@ -9,7 +9,7 @@
      npx playwright install chromium
      node scripts/screenshot.js
 
-   If the Playwright browser download is blocked (cdp.playwright.dev is not
+   If the Playwright browser download is blocked (cdn.playwright.dev is not
    reachable from every network), the script falls back to an already installed
    Chrome or Edge. Chrome 153 drives the same engine as Playwright's bundled
    Chromium 153, so the rendering is identical.

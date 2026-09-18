@@ -64,18 +64,18 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 20% -10%,
-      rgba(212,165,90,0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 35% at 50% -5%,
+    radial-gradient(ellipse 80% 50% at 50% -20%,
+      rgba(212,165,90,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 15% -10%,
       rgba(212,165,90,0.08) 0%, transparent 65%),
-    radial-gradient(ellipse 60% 40% at 80% -10%,
-      rgba(212,165,90,0.10) 0%, transparent 70%);
-  animation: lampBreath 7s ease-in-out infinite;
+    radial-gradient(ellipse 40% 30% at 85% -10%,
+      rgba(212,165,90,0.08) 0%, transparent 65%);
+  animation: lampBreath 8s ease-in-out infinite;
 }
 
 @keyframes lampBreath {
   0%, 100% { opacity: 1; }
-  50%      { opacity: 0.7; }
+  50%      { opacity: 0.75; }
 }
 
 /* --- paper texture on the wall (seamless CSS ruling, no tiles) ---------- */

@@ -440,31 +440,31 @@
 
   var ATLAS_NODES = [
     // dev cases — amber
-    { id: 'dev01', label: 'Baby Monitor', group: 'dev', href: 'cases/dev/01-videokamera.en.md' },
-    { id: 'dev02', label: 'Between the Lines', group: 'dev', href: 'cases/dev/02-normcontrol-kb.en.md' },
-    { id: 'dev03', label: 'Through the Ripple', group: 'dev', href: 'cases/dev/03-echelon-mini-game.en.md' },
-    { id: 'dev04', label: 'Echelon Beyond', group: 'dev', href: 'cases/dev/04-echelon-beyond.en.md' },
-    { id: 'dev05', label: 'Art & Music Pipeline', group: 'dev', href: 'cases/dev/05-cline-art-music.en.md' },
-    { id: 'dev06', label: 'Print Layout', group: 'dev', href: 'cases/dev/06-txt-to-docx.en.md' },
-    { id: 'dev07', label: 'Remote Pipeline', group: 'dev', href: 'cases/dev/07-echelon-remote-pipeline.en.md' },
+    { id: 'dev01', label: 'Baby Monitor', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/01-videokamera.en.md' },
+    { id: 'dev02', label: 'Between the Lines', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/02-normcontrol-kb.en.md' },
+    { id: 'dev03', label: 'Through the Ripple', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/03-echelon-mini-game.en.md' },
+    { id: 'dev04', label: 'Echelon Beyond', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/04-echelon-beyond.en.md' },
+    { id: 'dev05', label: 'Art & Music Pipeline', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/05-cline-art-music.en.md' },
+    { id: 'dev06', label: 'Print Layout', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/06-txt-to-docx.en.md' },
+    { id: 'dev07', label: 'Remote Pipeline', group: 'dev', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/dev/07-echelon-remote-pipeline.en.md' },
     // creative cases — lavender
-    { id: 'cr01', label: 'Lorien', group: 'creative', href: 'cases/creative/01-lorien.en.md' },
-    { id: 'cr02', label: 'Curse of Discord', group: 'creative', href: 'cases/creative/02-dnd-module.en.md' },
-    { id: 'cr03', label: 'Tavern Tales', group: 'creative', href: 'cases/creative/03-tavern-tales.en.md' },
-    { id: 'cr04', label: 'Prompt Engineering', group: 'creative', href: 'cases/creative/04-prompt-engineering.en.md' },
-    { id: 'cr06', label: 'D&D Adaptation', group: 'creative', href: 'cases/creative/06-dnd-adaptation.en.md' },
+    { id: 'cr01', label: 'Lorien', group: 'creative', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/creative/01-lorien.en.md' },
+    { id: 'cr02', label: 'Curse of Discord', group: 'creative', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/creative/02-dnd-module.en.md' },
+    { id: 'cr03', label: 'Tavern Tales', group: 'creative', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/creative/03-tavern-tales.en.md' },
+    { id: 'cr04', label: 'Prompt Engineering', group: 'creative', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/creative/04-prompt-engineering.en.md' },
+    { id: 'cr06', label: 'D&D Adaptation', group: 'creative', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/cases/creative/06-dnd-adaptation.en.md' },
     // skills — rose
-    { id: 'sk-ai', label: 'AI Orchestration', group: 'skill', href: 'skills/ai-orchestration.en.md' },
-    { id: 'sk-cline', label: 'Cline Tool Orchestrator', group: 'skill', href: 'skills/cline-as-tool-orchestrator.en.md' },
-    { id: 'sk-auto', label: 'Automation', group: 'skill', href: 'skills/automation.en.md' },
-    { id: 'sk-full', label: 'Fullstack Local', group: 'skill', href: 'skills/fullstack-local.en.md' },
-    { id: 'sk-content', label: 'Content Pipeline', group: 'skill', href: 'skills/content-pipeline.en.md' },
-    { id: 'sk-visual', label: 'Visual Style', group: 'skill', href: 'skills/visual-style.en.md' },
-    { id: 'sk-gpu', label: 'Local AI GPU', group: 'skill', href: 'skills/local-ai-gpu.en.md' },
-    { id: 'sk-remote', label: 'Remote Access', group: 'skill', href: 'skills/remote-access.en.md' },
-    { id: 'sk-prompt', label: 'Prompt Engineering', group: 'skill', href: 'skills/prompt-engineering.en.md' },
-    { id: 'sk-narr', label: 'Narrative Design', group: 'skill', href: 'skills/narrative-design.en.md' },
-    { id: 'sk-game', label: 'Game Design', group: 'skill', href: 'skills/game-design.en.md' }
+    { id: 'sk-ai', label: 'AI Orchestration', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/ai-orchestration.en.md' },
+    { id: 'sk-cline', label: 'Cline Tool Orchestrator', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/cline-as-tool-orchestrator.en.md' },
+    { id: 'sk-auto', label: 'Automation', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/automation.en.md' },
+    { id: 'sk-full', label: 'Fullstack Local', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/fullstack-local.en.md' },
+    { id: 'sk-content', label: 'Content Pipeline', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/content-pipeline.en.md' },
+    { id: 'sk-visual', label: 'Visual Style', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/visual-style.en.md' },
+    { id: 'sk-gpu', label: 'Local AI GPU', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/local-ai-gpu.en.md' },
+    { id: 'sk-remote', label: 'Remote Access', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/remote-access.en.md' },
+    { id: 'sk-prompt', label: 'Prompt Engineering', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/prompt-engineering.en.md' },
+    { id: 'sk-narr', label: 'Narrative Design', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/narrative-design.en.md' },
+    { id: 'sk-game', label: 'Game Design', group: 'skill', href: 'https://github.com/frinog1-a11y/portfolio/blob/main/skills/game-design.en.md' }
   ];
 
   var ATLAS_EDGES = [
@@ -781,7 +781,8 @@
     function atlasOpen(node) {
       if (!node || !node.href) { return; }
       var lang = currentLang();
-      window.location.href = node.href.replace(/\.(en|ru)\.md$/, '.' + lang + '.md');
+      var url = node.href.replace(/\.(en|ru)\.md$/, '.' + lang + '.md');
+      window.open(url, '_blank', 'noopener');
     }
 
     var touchNode = null;

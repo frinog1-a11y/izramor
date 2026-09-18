@@ -1116,8 +1116,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   min-width: 268px;
 }
 
-/* the first service card leads the section: bigger icon and headline */
-.cards-grid > .card:first-child .ico { width: 56px; height: 56px; }
+/* the first service card leads the section: bigger headline */
 .cards-grid > .card:first-child h3 { font-size: 24px; }
 
 .card {
@@ -1245,25 +1244,7 @@ body.lang-ru [lang="en"] { display: none !important; }
 /* case cards: the meta drawer stays at the bottom of the cabinet */
 .cases-grid .cmp:last-child { margin-top: auto; }
 
-/* --- icons -------------------------------------------------------------- */
 
-.ico {
-  width: 48px;
-  height: 48px;
-  fill: none;
-  stroke: var(--amber);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform 0.4s ease;
-}
-
-.card:nth-child(1):hover .ico { transform: rotate(-6deg) scale(1.06); }
-.card:nth-child(2):hover .ico { transform: translateY(-3px); }
-.card:nth-child(3):hover .ico { transform: scale(1.1); }
-.card:nth-child(4):hover .ico { transform: translateX(3px); }
-.card:nth-child(5):hover .ico { transform: rotate(6deg) scale(1.06); }
-.card:nth-child(6):hover .ico { transform: rotate(90deg); }
 
 /* --- tags --------------------------------------------------------------- */
 

@@ -1145,7 +1145,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   border: 1px solid rgba(212,165,90,0.2);
   border-top-color: rgba(212,165,90,0.25);
   border-radius: 4px;
-  padding: 42px 26px 26px;
+  padding: 24px 26px 26px;
   overflow: hidden;
   box-shadow:
     0 2px 0 rgba(0,0,0,0.35),
@@ -1176,43 +1176,7 @@ body.lang-ru [lang="en"] { display: none !important; }
 .card:nth-child(odd) { background-color: #241e29; }
 .card:nth-child(even) { background-color: #26202c; }
 
-/* metal drawer handle, centred */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  width: 56px;
-  height: 7px;
-  margin-left: -28px;
-  border-radius: 3px;
-  background: linear-gradient(180deg, #e8bf7a 0%, #d4a55a 40%, #a07530 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.35),
-    inset 0 -1px 0 rgba(0,0,0,0.4),
-    0 1px 2px rgba(0,0,0,0.6);
-  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-/* two screws, one at each end of the handle */
-.card::after {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  width: 96px;
-  height: 7px;
-  margin-left: -48px;
-  background-image:
-    radial-gradient(circle at 30% 30%, #d4a55a 0%, #8a6a3a 60%, #4a3520 100%),
-    radial-gradient(circle at 30% 30%, #d4a55a 0%, #8a6a3a 60%, #4a3520 100%);
-  background-size: 7px 7px, 7px 7px;
-  background-position: 1px 0, 84px 0;
-  background-repeat: no-repeat;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.7));
-  pointer-events: none;
-}
 
 .card:hover {
   transform: translateY(3px);
@@ -1221,15 +1185,6 @@ body.lang-ru [lang="en"] { display: none !important; }
     0 14px 28px rgba(0,0,0,0.5);
 }
 
-/* handle catches the light as the drawer comes out */
-.card:hover::before {
-  background: linear-gradient(180deg, #f6d79a 0%, #e0b264 40%, #a87a42 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.5),
-    inset 0 -1px 0 rgba(0,0,0,0.4),
-    0 2px 4px rgba(0,0,0,0.6),
-    0 0 12px rgba(212,165,90,0.35);
-}
 
 .card h3 {
   font-size: 22px;
@@ -1427,7 +1382,7 @@ body.lang-ru [lang="en"] { display: none !important; }
 /* card 01 is the hero of the section: two columns wide, bigger headline */
 .cases-grid > .case-card:first-child {
   flex: 1 1 calc(66.666% - 22px);
-  padding: 60px 26px 30px;
+  padding: 48px 26px 30px;
 }
 
 .cases-grid > .case-card:first-child h3 {
@@ -1501,10 +1456,8 @@ body.lang-ru [lang="en"] { display: none !important; }
 /* two rows on the case drawer front:
    [ 01 ]                     [ badge ]
                  [ handle ]                                          */
-.cases-grid .case-card { padding-top: 56px; }
+.cases-grid .case-card { padding-top: 44px; }
 
-.cases-grid .card::before,
-.cases-grid .card::after { top: 34px; }
 
 .case-card p { max-width: 62em; }
 
@@ -1902,8 +1855,6 @@ body.lang-ru [lang="en"] { display: none !important; }
   .lamp-cone { width: 200px; height: 160px; margin-left: -100px; }
   .sheet-task, .sheet-map, .sheet-price, .sheet-workflow { margin: 0; }
   .pinned-sheet { max-width: 150px; font-size: 10px; right: 14px; top: 18px; }
-  .card::before { width: 40px; margin-left: -20px; }
-  .card::after { background-position: 12px 0, 76px 0; }
 }
 
 @media (max-width: 520px) {

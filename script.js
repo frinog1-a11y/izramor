@@ -417,6 +417,7 @@
   ];
 
   var NODE_COLORS = { dev: '#d4a55a', creative: '#8a7ab8', skill: '#b86a8a' };
+  var NODE_DARK = { dev: '#8a6a2f', creative: '#564a7a', skill: '#7a4058' };
 
   var atlasCanvas = $('#atlas-canvas');
   var atlasTooltip = $('#atlas-tooltip');
@@ -438,7 +439,8 @@
       var node = {
         id: n.id, label: n.label, group: n.group, href: n.href,
         x: (i % 2 === 0) ? 0.35 : 0.65, y: 0.2 + (i / ATLAS_NODES.length) * 0.7,
-        vx: 0, vy: 0, degree: 0, phase: Math.random() * Math.PI * 2, radius: 4
+        vx: 0, vy: 0, degree: 0, phase: Math.random() * Math.PI * 2, radius: 4,
+        slot: (Math.random() * 90 - 45) * Math.PI / 180
       };
       atlasNodes.push(node);
       atlasNodeById[node.id] = node;
@@ -459,6 +461,11 @@
     });
 
     atlasNodes.forEach(function (n) { n.radius = 4 + Math.min(4, n.degree * 0.9); });
+
+    /* the busiest nodes keep a permanent label; the rest label on hover */
+    var atlasHubs = {};
+    atlasNodes.slice().sort(function (a, b) { return b.degree - a.degree; })
+      .slice(0, 6).forEach(function (n) { atlasHubs[n.id] = true; });
 
     var atlasAdj = {};
     atlasNodes.forEach(function (n) { atlasAdj[n.id] = {}; });
@@ -558,40 +565,101 @@
       return !!(atlasAdj[a.id] && atlasAdj[a.id][b.id]);
     }
 
+    /* a small stable bow per edge, so lines read as hand-drawn */
+    function atlasEdgeBow(e) {
+      var dx = e.b.x - e.a.x;
+      var dy = e.b.y - e.a.y;
+      var len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var side = (e.a.id < e.b.id) ? 1 : -1;
+      var bow = (4 + (len % 3)) * side;
+      return {
+        x: (e.a.x + e.b.x) / 2 - (dy / len) * bow,
+        y: (e.a.y + e.b.y) / 2 + (dx / len) * bow
+      };
+    }
+
     function atlasDraw() {
       if (!atlasCtx) { return; }
       atlasCtx.clearRect(0, 0, atlasW, atlasH);
 
+      /* edges: dashed pencil dimension lines */
       atlasEdges.forEach(function (e) {
-        var dim = atlasHover && atlasHover !== e.a && atlasHover !== e.b;
-        var base = (e.kind === 'skill') ? 0.15 : 0.07;
-        atlasCtx.strokeStyle = 'rgba(242,238,248,' + (dim ? 0.03 : base) + ')';
+        var live = atlasHover && (atlasHover === e.a || atlasHover === e.b);
+        var dim = atlasHover && !live;
+        var mid = atlasEdgeBow(e);
+        atlasCtx.setLineDash(live ? [] : [4, 3]);
         atlasCtx.lineWidth = 1;
+        if (live) {
+          atlasCtx.strokeStyle = 'rgba(242,238,248,0.9)';
+        } else {
+          var base = (e.kind === 'skill') ? 0.5 : 0.35;
+          atlasCtx.strokeStyle = 'rgba(242,238,248,' + (dim ? 0.1 : base) + ')';
+        }
         atlasCtx.beginPath();
         atlasCtx.moveTo(e.a.x, e.a.y);
-        atlasCtx.lineTo(e.b.x, e.b.y);
+        atlasCtx.quadraticCurveTo(mid.x, mid.y, e.b.x, e.b.y);
         atlasCtx.stroke();
       });
+      atlasCtx.setLineDash([]);
 
+      /* nodes: nail heads pinning the drawing to the wall */
       atlasNodes.forEach(function (n) {
         var dim = atlasHover && atlasHover !== n && !isNeighbour(atlasHover, n);
-        var pulse = reduceMotion ? 0 : 0.05 * Math.sin(atlasTime * 0.0016 + n.phase);
-        var r = n.radius * (1 + pulse);
-        atlasCtx.globalAlpha = dim ? 0.2 : 1;
-        atlasCtx.fillStyle = NODE_COLORS[n.group] || '#f2eef8';
+        var hover = atlasHover === n;
+        var r = 7;
+        var color = NODE_COLORS[n.group] || '#f2eef8';
+        var dark = NODE_DARK[n.group] || '#8a8496';
+        atlasCtx.globalAlpha = dim ? 0.25 : 1;
+
+        /* the nail stands proud of the paper */
+        var halo = atlasCtx.createRadialGradient(n.x, n.y, r * 0.6, n.x, n.y, 10);
+        halo.addColorStop(0, 'rgba(0,0,0,' + (hover ? 0.55 : 0.4) + ')');
+        halo.addColorStop(1, 'rgba(0,0,0,0)');
+        atlasCtx.fillStyle = halo;
+        atlasCtx.beginPath();
+        atlasCtx.arc(n.x, n.y, 10, 0, Math.PI * 2);
+        atlasCtx.fill();
+
+        /* the head: lit metal sphere */
+        var head = atlasCtx.createRadialGradient(n.x - r * 0.3, n.y - r * 0.35, r * 0.1, n.x, n.y, r);
+        head.addColorStop(0, 'rgba(255,255,255,' + (hover ? 0.5 : 0.35) + ')');
+        head.addColorStop(0.4, color);
+        head.addColorStop(1, dark);
+        atlasCtx.fillStyle = head;
         atlasCtx.beginPath();
         atlasCtx.arc(n.x, n.y, r, 0, Math.PI * 2);
         atlasCtx.fill();
 
-        if (atlasHover === n) {
-          atlasCtx.globalAlpha = 1;
-          atlasCtx.strokeStyle = 'rgba(242,238,248,0.55)';
-          atlasCtx.lineWidth = 1;
-          atlasCtx.beginPath();
-          atlasCtx.arc(n.x, n.y, r + 5, 0, Math.PI * 2);
-          atlasCtx.stroke();
-        }
+        /* the screw slot */
+        atlasCtx.save();
+        atlasCtx.translate(n.x, n.y);
+        atlasCtx.rotate(n.slot || 0);
+        atlasCtx.strokeStyle = 'rgba(0,0,0,0.55)';
+        atlasCtx.lineWidth = 1;
+        atlasCtx.beginPath();
+        atlasCtx.moveTo(-3, 0);
+        atlasCtx.lineTo(3, 0);
+        atlasCtx.stroke();
+        atlasCtx.restore();
+
+        /* the glint */
+        atlasCtx.fillStyle = 'rgba(255,255,255,' + (hover ? 0.85 : 0.6) + ')';
+        atlasCtx.beginPath();
+        atlasCtx.arc(n.x - r * 0.35, n.y - r * 0.4, hover ? 1.6 : 1, 0, Math.PI * 2);
+        atlasCtx.fill();
+
         atlasCtx.globalAlpha = 1;
+
+        /* labels: hubs always, the rest on hover */
+        if (!dim && (hover || atlasHubs[n.id])) {
+          atlasCtx.font = '9px "JetBrains Mono", Consolas, monospace';
+          atlasCtx.textAlign = 'center';
+          atlasCtx.textBaseline = 'top';
+          atlasCtx.fillStyle = color;
+          atlasCtx.globalAlpha = hover ? 0.95 : 0.7;
+          atlasCtx.fillText(String(n.label).toUpperCase(), n.x, n.y + r + 4);
+          atlasCtx.globalAlpha = 1;
+        }
       });
     }
 

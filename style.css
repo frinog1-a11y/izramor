@@ -512,6 +512,155 @@ body.lang-ru [lang="en"] { display: none !important; }
 .lamp-2 .lamp-cone::after { animation-delay: -9s; }
 .lamp-3 .lamp-cone::after { animation-delay: -14s; }
 
+/* --- two lived-in details: a coffee cup and a potted plant -------------- */
+
+.hero-prop {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* coffee, bottom-left: the cup is still, only the steam moves */
+.prop-coffee {
+  left: 34px;
+  bottom: 10px;
+  width: 64px;
+  height: 80px;
+  opacity: 0.78;
+}
+
+.prop-coffee .saucer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #34303f 0%, #221f2c 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.prop-coffee .cup {
+  position: absolute;
+  left: 8px;
+  bottom: 5px;
+  width: 48px;
+  height: 34px;
+  border-radius: 5px 5px 15px 15px;
+  background: linear-gradient(180deg, #322d3d 0%, #241f2c 100%);
+  border-top: 2px solid rgba(212,165,90,0.45);
+  box-shadow: inset 0 -7px 12px rgba(0,0,0,0.45);
+}
+
+/* coffee surface */
+.prop-coffee .cup::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  right: 4px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 42% 40%, #4a2f22 0%, #2a1a12 100%);
+  box-shadow: inset 0 0 5px rgba(212,165,90,0.16);
+}
+
+/* handle */
+.prop-coffee .cup::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: -7px;
+  width: 9px;
+  height: 14px;
+  border: 2px solid rgba(212,165,90,0.28);
+  border-left: 0;
+  border-radius: 0 60% 60% 0;
+}
+
+.steam {
+  position: absolute;
+  width: 2px;
+  height: 34px;
+  border-radius: 2px;
+  filter: blur(1px);
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(242,238,248,0.5) 35%,
+    rgba(242,238,248,0.3) 72%,
+    transparent 100%);
+  animation: steamRise 4s ease-in-out infinite;
+}
+
+.steam-1 { left: 21px; bottom: 38px; }
+.steam-2 { left: 31px; bottom: 42px; height: 30px; animation-delay: 0.5s; }
+.steam-3 { left: 41px; bottom: 38px; height: 26px; animation-delay: 1s; }
+
+@keyframes steamRise {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50%      { transform: translateY(-8px); opacity: 0.2; }
+}
+
+/* plant, top-right: the pot does not move, one leaf sways */
+.prop-plant {
+  right: 56px;
+  top: 96px;
+  width: 60px;
+  height: 78px;
+  opacity: 0.75;
+}
+
+.prop-plant .pot {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 36px;
+  clip-path: polygon(6% 0, 94% 0, 82% 100%, 18% 100%);
+  background: linear-gradient(180deg, #a87a42 0%, #8a5a3a 45%, #6b4227 100%);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.10);
+}
+
+/* soil */
+.prop-plant .pot::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  right: 5px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2a1c12;
+  box-shadow: inset 0 -1px 2px rgba(0,0,0,0.6);
+}
+
+.prop-plant .leaf {
+  position: absolute;
+  bottom: 33px;
+  width: 6px;
+  border-radius: 50% 50% 38% 38%;
+  background: linear-gradient(180deg, #5d7d5b 0%, #4a6a4a 55%, #3b563b 100%);
+  transform-origin: 50% 100%;
+}
+
+.leaf-1 { left: 22px; height: 28px; transform: rotate(-14deg); }
+.leaf-2 { left: 28px; height: 33px; transform: rotate(-3deg); }
+.leaf-3 { left: 35px; height: 24px; transform: rotate(11deg); }
+
+/* the longest leaf, pivoting at its base */
+.leaf-4 {
+  left: 33px;
+  height: 40px;
+  transform-origin: 0% 100%;
+  transform: rotate(20deg);
+  animation: leafSway 7s ease-in-out 0.8s infinite;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(18.5deg); }
+  50%      { transform: rotate(21.5deg); }
+}
+
 #dust-canvas {
   position: absolute;
   inset: 0;
@@ -1541,6 +1690,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   .lamps { height: 200px; }
   .lamp-1, .lamp-3 { display: none; }
   .lamp-cone { width: 200px; height: 160px; margin-left: -100px; }
+  .hero-prop { display: none; }
   .sheet-task, .sheet-map, .sheet-price, .sheet-workflow { margin: 0; }
   .pinned-sheet { max-width: 150px; font-size: 10px; right: 14px; top: 18px; }
   .card::before { width: 40px; margin-left: -20px; }
@@ -1561,6 +1711,7 @@ body.lang-ru [lang="en"] { display: none !important; }
   html { scroll-behavior: auto; }
   body::before { animation: none; }
   .lamp { animation: none; }
+  .steam, .leaf-4 { animation: none; }
   .lamp-cone, .lamp-cone::after { animation: none; }
   .hero-name { animation: none; }
   .dot { animation: none; }

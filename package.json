@@ -1,0 +1,25 @@
+{
+  "name": "landing",
+  "version": "1.0.0",
+  "description": "Bilingual (EN default, RU via switch) one-page landing for Izramor: AI engineer and automation consultant.\r Pure HTML + CSS + JS, no frameworks, no third-party JS. Only external resource: Google Fonts\r (Playfair Display, Inter, JetBrains Mono).",
+  "main": "script.js",
+  "scripts": {
+    "screenshots": "node scripts/screenshot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frinog1-a11y/izramor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/frinog1-a11y/izramor/issues"
+  },
+  "homepage": "https://github.com/frinog1-a11y/izramor#readme",
+  "dependencies": {
+    "playwright": "^1.63.0"
+  }
+}

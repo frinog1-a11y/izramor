@@ -803,12 +803,24 @@ body.lang-ru [lang="en"] { display: none !important; }
 
 /* each drawer gets its own cut of the grain */
 .card:nth-child(2n) {
-  background-position: 0 2px, 20% 30%, 70% 55%, 45% 75%, 0 0;
+  background-position: 0 3px, 20% 30%, 70% 55%, 45% 75%, 0 0;
 }
 
 .card:nth-child(3n) {
-  background-position: 0 7px, 40% 25%, 60% 70%, 35% 90%, 0 0;
+  background-position: 0 7px, 45% 22%, 55% 68%, 30% 88%, 0 0;
 }
+
+.card:nth-child(4n) {
+  background-position: 0 11px, 65% 35%, 40% 60%, 55% 82%, 0 0;
+}
+
+.card:nth-child(5n) {
+  background-position: 0 5px, 35% 45%, 65% 72%, 50% 92%, 0 0;
+}
+
+/* and a slightly different tone of wood */
+.card:nth-child(odd) { background-color: #241e29; }
+.card:nth-child(even) { background-color: #26202c; }
 
 /* metal drawer handle, centred */
 .card::before {
